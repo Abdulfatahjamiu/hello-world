@@ -1,0 +1,121 @@
+-- Main Application Schema
+
+-- Preregistration & Parents
+CREATE TABLE parents (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone_number TEXT NOT NULL,
+    email TEXT,
+    child_name TEXT,
+    child_age INTEGER,
+    enquiry_date TEXT,
+    notes TEXT,
+    follow_up_date TEXT,
+    next_of_kin_name TEXT,
+    next_of_kin_phone TEXT
+);
+
+-- Students
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    date_of_birth TEXT NOT NULL,
+    address_line_1 TEXT,
+    city TEXT,
+    state TEXT,
+    zip_code TEXT,
+    class TEXT NOT NULL,
+    gender TEXT,
+    medical_info TEXT,
+    photo_path TEXT,
+    parent_id INTEGER,
+    registration_date TEXT,
+    FOREIGN KEY (parent_id) REFERENCES parents(id)
+);
+
+-- Payments
+CREATE TABLE payments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER,
+    amount REAL NOT NULL,
+    account TEXT NOT NULL, -- "School Fees" or "Materials"
+    payment_date TEXT NOT NULL,
+    academic_year TEXT,
+    term TEXT,
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+-- Bus Management
+CREATE TABLE buses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    bus_number TEXT NOT NULL,
+    capacity INTEGER NOT NULL
+);
+
+CREATE TABLE drivers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone_number TEXT NOT NULL,
+    license_number TEXT NOT NULL
+);
+
+CREATE TABLE routes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    bus_id INTEGER,
+    driver_id INTEGER,
+    FOREIGN KEY (bus_id) REFERENCES buses(id),
+    FOREIGN KEY (driver_id) REFERENCES drivers(id)
+);
+
+CREATE TABLE student_bus (
+    student_id INTEGER,
+    route_id INTEGER,
+    pickup_status TEXT,
+    dropoff_status TEXT,
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (route_id) REFERENCES routes(id)
+);
+
+-- Academic Management
+CREATE TABLE academic_years (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    year TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE terms (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    academic_year_id INTEGER,
+    start_date TEXT,
+    end_date TEXT,
+    FOREIGN KEY (academic_year_id) REFERENCES academic_years(id)
+);
+
+CREATE TABLE classes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE sections (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    class_id INTEGER,
+    FOREIGN KEY (class_id) REFERENCES classes(id)
+);
+
+CREATE TABLE student_class_assignments (
+    student_id INTEGER,
+    section_id INTEGER,
+    term_id INTEGER,
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (section_id) REFERENCES sections(id),
+    FOREIGN KEY (term_id) REFERENCES terms(id)
+);
+
+-- User Authentication
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL
+);
