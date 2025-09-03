@@ -8,7 +8,7 @@ import csv
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.route_controller import add_route, get_all_routes, get_bus_numbers, get_driver_names
+from core.route_controller import add_route, get_all_routes, get_bus_numbers, get_driver_names
 
 class RouteView(tk.Frame):
     def __init__(self, master=None):

@@ -6,7 +6,7 @@ import os
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.academic_calendar_controller import add_academic_year, get_all_academic_years, add_term, get_terms_by_year
+from core.academic_calendar_controller import add_academic_year, get_all_academic_years, add_term, get_terms_by_year
 
 class AcademicCalendarView(tk.Frame):
     def __init__(self, master=None):

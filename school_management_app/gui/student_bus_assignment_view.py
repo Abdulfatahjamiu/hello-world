@@ -8,9 +8,9 @@ import csv
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.student_bus_controller import assign_student_to_route, get_all_assignments, get_route_names
-from modules.student_controller import get_student_names
-from modules.transport_schedule import generate_transport_schedule
+from core.student_bus_controller import assign_student_to_route, get_all_assignments, get_route_names
+from core.student_controller import get_student_names
+from core.transport_schedule import generate_transport_schedule
 
 class StudentBusAssignmentView(tk.Frame):
     def __init__(self, master=None):

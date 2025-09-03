@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-[#122118] text-white">
+<div class="relative flex size-full min-h-screen flex-col" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="size-6 text-[#38e07b]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold">School Registration App</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-white/80">
+<a class="hover:text-white" href="#">Dashboard</a>
+<a class="hover:text-white" href="#">Pre-Registration</a>
+<a class="hover:text-white" href="#">Enrollment</a>
+<a class="hover:text-white" href="#">Payments</a>
+<a class="text-white font-semibold" href="#">Bus Services</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-[#264532] text-white hover:bg-[#366348] transition-colors">
+<span class="material-symbols-outlined"> notifications </span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWBUdU2oLjrzMy8d5j208dJXNKWnUSYOqm6eDlOnG_F6GaVyuISyZG0J-WBg7Uaeboavi7HldU3HK7CudqhuQBwJD_EBZjbPuUMYVwN5CPouA7h-4FHKVd4dunM1Dhnfm1HLgUF13MjOTf6e-cX7FijVk7tTfpwLxlp9iCCJybBX1eEX8mpa7RpcgFt3sfmk5KbSj0O1t7WeHcq9cL5I5KAVG9p0DAo-NqL7XVdXaFJaQSrnL5YhRAeMvUm2NGKT_ZSf-peEGyawht");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-6 lg:px-8 py-10">
+<div class="max-w-7xl mx-auto">
+<div class="mb-8">
+<h2 class="text-3xl font-bold tracking-tight">Bus Routes Management</h2>
+<p class="text-[#96c5a9] mt-1">Manage bus routes, drivers, and bus information.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2">
+<h3 class="text-xl font-semibold mb-4">Existing Routes</h3>
+<div class="overflow-x-auto rounded-lg border border-[#366348] bg-[#1a2c21]">
+<table class="w-full text-sm text-left">
+<thead class="bg-[#1b3124] text-xs uppercase text-[#96c5a9]">
+<tr>
+<th class="px-6 py-3" scope="col">Route Name</th>
+<th class="px-6 py-3" scope="col">Bus Number</th>
+<th class="px-6 py-3" scope="col">Driver Name</th>
+</tr>
+</thead>
+<tbody>
+{% for route in routes %}
+<tr class="border-t border-t-[#366348] hover:bg-[#1b3124]/50">
+<td class="px-6 py-4 font-medium">{{ route[1] }}</td>
+<td class="px-6 py-4 text-[#96c5a9]">{{ route[2] }}</td>
+<td class="px-6 py-4 text-[#96c5a9]">{{ route[3] }}</td>
+</tr>
+{% else %}
+<tr>
+<td colspan="3" class="text-center py-10 text-gray-500">No routes found.</td>
+</tr>
+{% endfor %}
+<tr class="border-t border-t-[#366348] hover:bg-[#1b3124]/50">
+<td class="px-6 py-4 font-medium">Route 202</td>
+<td class="px-6 py-4 text-[#96c5a9]">Sarah Williams</td>
+<td class="px-6 py-4 text-[#96c5a9]">50</td>
+<td class="px-6 py-4 text-[#96c5a9]">XYZ-456</td>
+<td class="px-6 py-4 text-[#96c5a9]">8:00 AM</td>
+<td class="px-6 py-4 text-[#96c5a9]">4:00 PM</td>
+<td class="px-6 py-4 text-right">
+<a class="font-medium text-[#38e07b] hover:underline" href="#">Edit</a>
+</td>
+</tr>
+<tr class="border-t border-t-[#366348] hover:bg-[#1b3124]/50">
+<td class="px-6 py-4 font-medium">Route 303</td>
+<td class="px-6 py-4 text-[#96c5a9]">David Lee</td>
+<td class="px-6 py-4 text-[#96c5a9]">40</td>
+<td class="px-6 py-4 text-[#96c5a9]">DEF-789</td>
+<td class="px-6 py-4 text-[#96c5a9]">7:45 AM</td>
+<td class="px-6 py-4 text-[#96c5a9]">3:45 PM</td>
+<td class="px-6 py-4 text-right">
+<a class="font-medium text-[#38e07b] hover:underline" href="#">Edit</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-4">Add or Edit Route</h3>
+<form class="space-y-6 bg-[#1a2c21] p-6 rounded-lg border border-[#366348]">
+<div>
+<label class="block text-sm font-medium pb-2" for="route-number">Route Number</label>
+<input class="form-input w-full rounded-lg border border-[#366348] bg-[#1b3124] focus:border-[#38e07b] focus:ring-[#38e07b] placeholder:text-[#96c5a9]/50" id="route-number" placeholder="e.g., Route 404" type="text"/>
+</div>
+<div>
+<form id="add-route-form" method="POST" action="{{ url_for('bus.list_routes') }}" class="space-y-6 bg-[#1a2c21] p-6 rounded-lg border border-[#366348]">
+    <div>
+        <label class="block text-sm font-medium pb-2" for="route_name">Route Name</label>
+        <input class="form-input w-full rounded-lg border border-[#366348] bg-[#1b3124] focus:border-[#38e07b] focus:ring-[#38e07b] placeholder:text-[#96c5a9]/50" id="route_name" name="route_name" placeholder="e.g., Route 404" type="text" required>
+    </div>
+    <div>
+        <label class="block text-sm font-medium pb-2" for="bus_id">Bus</label>
+        <select name="bus_id" id="bus_id" class="form-select w-full rounded-lg border border-[#366348] bg-[#1b3124] focus:border-[#38e07b] focus:ring-[#38e07b] text-white">
+            {% for bus in buses %}
+            <option value="{{ bus.id }}">{{ bus.bus_number }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label class="block text-sm font-medium pb-2" for="driver_id">Driver</label>
+        <select name="driver_id" id="driver_id" class="form-select w-full rounded-lg border border-[#366348] bg-[#1b3124] focus:border-[#38e07b] focus:ring-[#38e07b] text-white">
+            {% for driver in drivers %}
+            <option value="{{ driver.id }}">{{ driver.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="flex justify-end pt-2">
+        <button class="flex items-center justify-center rounded-full h-11 px-6 bg-[#38e07b] text-[#122118] text-sm font-bold hover:bg-[#2fbc68] transition-colors" type="submit">
+            <span class="material-symbols-outlined mr-2">add_circle</span>
+            <span>Add Route</span>
+        </button>
+    </div>
+</form>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

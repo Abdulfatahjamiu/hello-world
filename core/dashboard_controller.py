@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 
 def get_dashboard_stats():
@@ -5,7 +6,7 @@ def get_dashboard_stats():
     Retrieves statistics for the dashboard.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         # Total students

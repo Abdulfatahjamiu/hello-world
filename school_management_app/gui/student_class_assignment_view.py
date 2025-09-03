@@ -7,10 +7,10 @@ import re
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.student_class_assignment_controller import assign_student_to_class, get_class_assignments
-from modules.student_controller import get_student_names
-from modules.academic_calendar_controller import get_all_terms
-from modules.class_management_controller import get_all_sections
+from core.student_class_assignment_controller import assign_student_to_class, get_class_assignments
+from core.student_controller import get_student_names
+from core.academic_calendar_controller import get_all_terms
+from core.class_management_controller import get_all_sections
 
 class StudentClassAssignmentView(tk.Frame):
     def __init__(self, master=None):

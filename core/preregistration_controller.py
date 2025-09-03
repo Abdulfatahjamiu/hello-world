@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 from datetime import datetime
 
@@ -6,7 +7,7 @@ def add_parent(name, phone_number, email, child_name, child_age, notes, follow_u
     Adds a new parent to the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         enquiry_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -28,7 +29,7 @@ def get_all_parents():
     Retrieves all parents from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         cursor.execute("SELECT * FROM parents")
@@ -45,7 +46,7 @@ def get_parent_names():
     Retrieves all parent names from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         cursor.execute("SELECT id, name FROM parents")

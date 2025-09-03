@@ -5,7 +5,7 @@ import os
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.preregistration_controller import add_parent
+from core.preregistration_controller import add_parent
 
 class PreregistrationView(tk.Frame):
     def __init__(self, master=None):

@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 
 def add_payment(student_id, amount, account, payment_date, academic_year, term):
@@ -5,7 +6,7 @@ def add_payment(student_id, amount, account, payment_date, academic_year, term):
     Adds a new payment to the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -25,7 +26,7 @@ def get_all_payments():
     Retrieves all payments from the.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -46,7 +47,7 @@ def get_payments_by_filter(student_id=None, start_date=None, end_date=None, acco
     Retrieves payments from the database based on filters.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         query = """

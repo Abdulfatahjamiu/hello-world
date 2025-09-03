@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B600%3B700&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-50: #f0f7ff;
+        --primary-100: #e0f0ff;
+        --primary-200: #c2e0ff;
+        --primary-300: #a3d1ff;
+        --primary-400: #85c2ff;
+        --primary-500: #66b2ff;
+        --primary-600: #4c91e6;
+        --primary-700: #3b7ad4;
+        --primary-800: #2a64c2;
+        --primary-900: #1a51b0;
+        --primary-950: #113d8f;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<div class="flex min-h-screen">
+<aside class="w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col">
+<div class="p-6">
+<h1 class="text-xl font-semibold text-gray-800">School Admin</h1>
+<p class="text-sm text-gray-500">Welcome</p>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md" href="#">
+<span class="material-symbols-outlined text-gray-500">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md" href="#">
+<span class="material-symbols-outlined text-gray-500">description</span>
+<span class="text-sm font-medium">Pre-registration</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md" href="#">
+<span class="material-symbols-outlined text-gray-500">person_add</span>
+<span class="text-sm font-medium">Enrollment</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 bg-primary-50 text-primary-700 rounded-md" href="#">
+<span class="material-symbols-outlined text-primary-700" style="font-variation-settings: 'FILL' 1">groups</span>
+<span class="text-sm font-semibold">Classes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md" href="#">
+<span class="material-symbols-outlined text-gray-500">payment</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md" href="#">
+<span class="material-symbols-outlined text-gray-500">directions_bus</span>
+<span class="text-sm font-medium">Bus Service</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md" href="#">
+<span class="material-symbols-outlined text-gray-500">bar_chart</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 p-8 bg-gray-50">
+<div class="max-w-7xl mx-auto">
+<header class="mb-8">
+<h1 class="text-4xl font-bold text-gray-800">Classes &amp; Sections</h1>
+<p class="text-gray-500 mt-1">Manage academic classes, sections, and student assignments.</p>
+</header>
+<div class="mb-6 flex justify-between items-center">
+    <form method="POST" action="{{ url_for('academic.classes') }}" class="relative w-full max-w-md">
+        <input type="text" name="class_name" class="form-input w-full pl-4 pr-20 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="Enter new class name (e.g., Grade 4)" required>
+        <button type="submit" name="add_class" class="absolute inset-y-0 right-0 flex items-center pr-3 text-sm font-semibold text-primary-700 hover:text-primary-900">Add Class</button>
+    </form>
+</div>
+<div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-gray-200">
+<h2 class="text-xl font-semibold text-gray-800">Class Roster</h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">Class Name</th>
+<th class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">Sections</th>
+<th class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">Total Students</th>
+<th class="px-6 py-3 text-right font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium">Grade 1</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600">1A, 1B</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600">50</td>
+<td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
+<button class="text-primary-700 hover:text-primary-900 font-semibold">View</button>
+<button class="text-gray-500 hover:text-gray-700 font-semibold">Edit</button>
+<button class="text-red-600 hover:text-red-800 font-semibold">Deactivate</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium">Grade 2</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600">2A, 2B, 2C</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600">75</td>
+<td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
+<button class="text-primary-700 hover:text-primary-900 font-semibold">View</button>
+<button class="text-gray-500 hover:text-gray-700 font-semibold">Edit</button>
+<button class="text-red-600 hover:text-red-800 font-semibold">Deactivate</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium">Grade 3</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600">3A, 3B</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600">60</td>
+<td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
+<button class="text-primary-700 hover:text-primary-900 font-semibold">View</button>
+<button class="text-gray-500 hover:text-gray-700 font-semibold">Edit</button>
+<button class="text-red-600 hover:text-red-800 font-semibold">Deactivate</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-gray-200">
+    <h3 class="text-lg font-semibold text-gray-800 mb-4">Add New Section</h3>
+    <form method="POST" action="{{ url_for('academic.classes') }}" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+        <div>
+            <label for="class_id" class="block text-sm font-medium text-gray-700">For Class</label>
+            <select name="class_id" id="class_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500">
+                {% for c in classes %}
+                <option value="{{ c.id }}">{{ c.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="section_name" class="block text-sm font-medium text-gray-700">Section Name</label>
+            <input type="text" name="section_name" id="section_name" placeholder="e.g., Section A" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500" required>
+        </div>
+        <button type="submit" name="add_section" class="flex items-center justify-center gap-2 rounded-md h-10 px-4 bg-primary-700 text-white text-sm font-semibold shadow-sm hover:bg-primary-800">
+            Add Section
+        </button>
+    </form>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

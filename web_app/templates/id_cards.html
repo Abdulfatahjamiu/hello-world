@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B600%3B700&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-50: #f0f7ff;
+        --primary-100: #e0f0ff;
+        --primary-200: #c2e0ff;
+        --primary-300: #a3d1ff;
+        --primary-400: #85c2ff;
+        --primary-500: #66b2ff;
+        --primary-600: #4c91e6;
+        --primary-700: #3b7ad4;
+        --primary-800: #2a64c2;
+        --primary-900: #1a51b0;
+        --primary-950: #113d8f;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<div class="flex min-h-screen">
+<aside class="w-64 bg-white border-r border-[var(--border-color)] flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 text-[var(--primary-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path></svg>
+</div>
+<h1 class="text-xl font-bold">SchoolReg</h1>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] rounded-md hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)]" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+          </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] rounded-md hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)]" href="#">
+<span class="material-symbols-outlined">person_add</span> Pre-Registration
+          </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] rounded-md hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)]" href="#">
+<span class="material-symbols-outlined">assignment_ind</span> Enrollment
+          </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] rounded-md hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)]" href="#">
+<span class="material-symbols-outlined">payment</span> Payments
+          </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] rounded-md hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)]" href="#">
+<span class="material-symbols-outlined">directions_bus</span> Bus Services
+          </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] rounded-md hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)]" href="#">
+<span class="material-symbols-outlined">class</span> Classes
+          </a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium bg-[var(--secondary-color)] text-[var(--primary-color)] rounded-md" href="#">
+<span class="material-symbols-outlined">assessment</span> Reports
+          </a>
+</nav>
+</aside>
+<div class="flex-1 flex flex-col">
+<header class="flex items-center justify-end whitespace-nowrap border-b border-[var(--border-color)] bg-white px-8 py-4">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-gray-100">
+<span class="material-symbols-outlined text-[var(--text-secondary)]">notifications</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBi0S7_4dfmRZTOBar7bCm2NeUHsCnfkJ3B2O9flc209ofUHYSaw0N1hec1VUOxAnE6f28D3FnQx_75cwt9ijI8JaUM5lxwMYT9MjnzUd96P_OMKvCAN0sddh3YPssLyp6DPsfxf0TwLzR3-rr3EK5ccANmXD7L889EcF7HfiGk2US0yMC60F7wyKrcTCpBt7a1PEiArJuTBRPUXrV18yjDgR-p7jNpg0dAaoTRjfYQWT7KRTYV6fBIyKhYEYx2P6dOgCFG7OFMIgmN");'></div>
+<div>
+<p class="font-semibold text-sm">Admin User</p>
+<p class="text-xs text-[var(--text-secondary)]">admin@school.com</p>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 bg-gray-50 p-8">
+<div class="max-w-7xl mx-auto">
+<div class="mb-8">
+<h2 class="text-3xl font-bold text-[var(--text-primary)]">Report Generation Center</h2>
+<p class="text-[var(--text-secondary)] mt-2">Generate detailed reports or student ID cards. Select an option to get started.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-sm border border-[var(--border-color)]">
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-[var(--text-primary)] mb-2" for="report-type">Generation Type</label>
+<select class="form-select w-full rounded-md border-[var(--border-color)] focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]" id="report-type">
+<option>Standard Reports</option>
+<option selected="">Student ID Cards</option>
+</select>
+</div>
+<div class="space-y-4">
+<h3 class="text-base font-semibold text-[var(--text-primary)]">Filters</h3>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-[var(--text-primary)] mb-1.5" for="academic-term">Academic Term/Year</label>
+<select class="form-select w-full rounded-md border-[var(--border-color)] focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]" id="academic-term">
+<option>2023-2024</option>
+<option>2022-2023</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[var(--text-primary)] mb-1.5" for="class-section">Class/Section</label>
+<select class="form-select w-full rounded-md border-[var(--border-color)] focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]" id="class-section">
+<option>All Classes</option>
+<option>Grade 5 - Section A</option>
+<option>Grade 6 - Section B</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[var(--text-primary)] mb-1.5" for="student-search">Search Students</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">search</span>
+<input class="form-input w-full rounded-md border-[var(--border-color)] focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)] pl-10" id="student-search" placeholder="Search by name or ID" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-[var(--border-color)] flex justify-end gap-3">
+<button class="px-6 py-2 text-sm font-semibold text-white rounded-md bg-[var(--primary-color)] hover:bg-blue-700 flex items-center gap-2 w-full justify-center">
+<span class="material-symbols-outlined text-base">badge</span>
+                                    Generate Cards
+                                </button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-[var(--border-color)]">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-[var(--text-primary)]">ID Card Preview</h3>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 text-sm font-semibold rounded-md text-[var(--text-secondary)] bg-gray-100 hover:bg-gray-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                                    Export as PDF
+                                </button>
+<button class="px-4 py-2 text-sm font-semibold rounded-md text-[var(--text-secondary)] bg-gray-100 hover:bg-gray-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">print</span>
+                                    Print All
+                                </button>
+</div>
+</div>
+<div class="bg-gray-50 border border-[var(--border-color)] rounded-lg p-4 h-[calc(100%-4rem)] overflow-y-auto no-scrollbar">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+<div class="bg-blue-600 h-20 flex items-center justify-center relative">
+<div class="absolute top-2 left-2 size-10 bg-white rounded-full flex items-center justify-center">
+<div class="w-8 h-8 text-[var(--primary-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path></svg>
+</div>
+</div>
+<h3 class="text-white font-bold text-lg">SCHOOL NAME</h3>
+</div>
+<div class="p-4 pt-10 text-center">
+<img alt="Student Photo" class="w-20 h-20 rounded-full mx-auto -mt-16 border-4 border-white shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCREc9jVquKvyt4vTSMv1FF1YkxySBl3K8fA0ZS5kxFLNoyLYzYVOXY8aKAlD5YjdwWa6zZwrjyz-gTyxDuHV4LTZZ_Rthvs0EQXY0JL6xV3p0AWw8ZshlxdiN4X_iD7Ii9HMZ5sJrhg0n0MckhAB-8bpNexMlVw7GuRfrw3CgyimQG2f40ae9bpvsTnb1dAOpPo7_U0GAZPofJ-GnovfT9BGjCD3k8bVnrvBSIhrWSMOI0H4J3-nz6EQ6SPnF3hwgP2xLlXauA6odV"/>
+<h4 class="mt-4 text-lg font-semibold text-[var(--text-primary)]">Olivia Chen</h4>
+<p class="text-sm text-[var(--text-secondary)]">ID: 12345</p>
+<div class="mt-4 text-left text-xs space-y-1 text-[var(--text-secondary)]">
+<p><span class="font-semibold text-[var(--text-primary)]">Class:</span> Grade 5 - A</p>
+<p><span class="font-semibold text-[var(--text-primary)]">DOB:</span> 01/15/2013</p>
+<p><span class="font-semibold text-[var(--text-primary)]">Emergency:</span> 555-0101</p>
+</div>
+</div>
+<div class="px-4 pb-2">
+<img alt="Barcode" class="h-8 w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKrhsw8kiqGgQO-j5oR25G2dPYqbeVvt_HD981eQ1tzJpNw02aMGxdyJjB7dimmWvfWVmZ6hq8pNLAcaMkwqFfZDp-5wTbs0VFMEahay8YZcD_Ss89iNb_-_DTFPYjzYIX1WH2LEmOaDiFr-HlscTU1YOooeZfC6b9CvGXgODpuGqINZEQ5ZKbBSMqxVSCSsm9n2xiSqVqF2qpjQr-us_ADsCv-xXxFTIxEDT2wZiWlhzH8CjgirjPxrJOnpP47pPjMv4nTDLahFxb"/>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+<div class="absolute top-2 right-2">
+<input checked="" class="form-checkbox h-5 w-5 text-[var(--primary-color)] rounded border-[var(--border-color)] focus:ring-[var(--primary-color)]" type="checkbox"/>
+</div>
+<div class="bg-blue-600 h-20 flex items-center justify-center relative">
+<div class="absolute top-2 left-2 size-10 bg-white rounded-full flex items-center justify-center">
+<div class="w-8 h-8 text-[var(--primary-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path></svg>
+</div>
+</div>
+<h3 class="text-white font-bold text-lg">SCHOOL NAME</h3>
+</div>
+<div class="p-4 pt-10 text-center">
+<img alt="Student Photo" class="w-20 h-20 rounded-full mx-auto -mt-16 border-4 border-white shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA66X5i9SAt-SWoR4HBmjDePKG5lDGEmKq6QvL5ii2MC88AuCrC_95YZ-Ix2yCAKUgYUVyoFbqgDfkYHPrPJRognctYF0tsWIXmUAjv_mOQs7qSfp5Vr6xStKL6hyY4fpMG67W4N0kWJ-bWjqELFkuzF7_c_lNHHHNXlU6W-dQs4hIQtxfQCNYC_N2X27W57mXZPHvKJm6s6LIRJf8GO4C6GC38ujSS2is6oFAbZEoh8rtxwAKfb8iOO5R5RR1wkKPZkLM5o8VJtt-7"/>
+<h4 class="mt-4 text-lg font-semibold text-[var(--text-primary)]">Ben Carter</h4>
+<p class="text-sm text-[var(--text-secondary)]">ID: 12346</p>
+<div class="mt-4 text-left text-xs space-y-1 text-[var(--text-secondary)]">
+<p><span class="font-semibold text-[var(--text-primary)]">Class:</span> Grade 5 - A</p>
+<p><span class="font-semibold text-[var(--text-primary)]">DOB:</span> 03/22/2013</p>
+<p><span class="font-semibold text-[var(--text-primary)]">Emergency:</span> 555-0102</p>
+</div>
+</div>
+<div class="px-4 pb-2">
+<img alt="Barcode" class="h-8 w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC7S-UsYJQImWzE3_5JSWWwuWIrtwL6c8v3aEf54m8WOTTCNb7cy0iY01VIkdAMBChxW5Jv91s9xdpAI6rQw_1j49GfD5BNnPBiqCrDbwLiPS_wgiCao67hpquM_2htaueKOkhumKQjkzErYkcCqpy4cJoXPz_9KQabeiOgGHVz2F7pneo05VC2x6keK4ZxfVRehT_UCDvFFP65rH0-C6nU_4epAJWLMbJR3POl5S86QehnwYc6OdCubQM1spuEc3AEFFGaNwhZcaz"/>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+<div class="absolute top-2 right-2">
+<input checked="" class="form-checkbox h-5 w-5 text-[var(--primary-color)] rounded border-[var(--border-color)] focus:ring-[var(--primary-color)]" type="checkbox"/>
+</div>
+<div class="bg-blue-600 h-20 flex items-center justify-center relative">
+<div class="absolute top-2 left-2 size-10 bg-white rounded-full flex items-center justify-center">
+<div class="w-8 h-8 text-[var(--primary-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path></svg>
+</div>
+</div>
+<h3 class="text-white font-bold text-lg">SCHOOL NAME</h3>
+</div>
+<div class="p-4 pt-10 text-center">
+<img alt="Student Photo" class="w-20 h-20 rounded-full mx-auto -mt-16 border-4 border-white shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9N5fUYfKbQj9nyAHKdQYWff0Wsg2-IjH-n113C7mRtma0-0vGJDmGcZQFrG5_jq_fnIRfUxx0vbviyVmiLMe9kYpz1-5pZndTq81MzwA5eXSpx7h8Gnem-83FHnzuDOFhySAP9luIlrMk8v8kVWahSGfanaPeNXWo5l9Fdrxocsbnzpcg9onIGhohugzvM4zjn-42aEKBRJObI0vlHVg8hmra5ZzQmN4aHA90-t_94Q4kXVLot5WjrKeO0YKX_Y5vx-_Z6C0NzSwL"/>
+<h4 class="mt-4 text-lg font-semibold text-[var(--text-primary)]">Sophia Rodriguez</h4>
+<p class="text-sm text-[var(--text-secondary)]">ID: 12347</p>
+<div class="mt-4 text-left text-xs space-y-1 text-[var(--text-secondary)]">
+<p><span class="font-semibold text-[var(--text-primary)]">Class:</span> Grade 6 - B</p>
+<p><span class="font-semibold text-[var(--text-primary)]">DOB:</span> 05/10/2012</p>
+<p><span class="font-semibold text-[var(--text-primary)]">Emergency:</span> 555-0103</p>
+</div>
+</div>
+<div class="px-4 pb-2">
+<img alt="Barcode" class="h-8 w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqYdmWuvVSWFXJPYAIStlqy5tGuH4d1DQx3iR2Fe-C1BfcPd5KdyLTSbm03C13jsViZ6D7Sm_zNHPeyuUAQ8qKV0E8zzp_S7jfEYILij8mPZS_eN9q_hS093J_HluaX7XbcWDd1F6AP2B9BXAQfqaqaNJfyroOFzjGjLrrMawMATSX_2rTylWeWemrK-fZnV_vcWOes0RB4NXA4zPOKHx3Mmrgppp5CPM-XreyR5ws_7EitR0BJnOlFS2CQWgMLvODZoThOK1cuawr"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

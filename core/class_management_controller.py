@@ -1,8 +1,9 @@
+from .config import DATABASE_PATH
 import sqlite3
 
 def add_class(name):
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO classes (name) VALUES (?)", (name,))
         conn.commit()
@@ -16,7 +17,7 @@ def add_class(name):
 
 def get_all_classes():
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM classes")
         classes = cursor.fetchall()
@@ -28,7 +29,7 @@ def get_all_classes():
 
 def add_section(name, class_id):
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO sections (name, class_id) VALUES (?, ?)", (name, class_id))
         conn.commit()
@@ -40,7 +41,7 @@ def add_section(name, class_id):
 
 def get_sections_by_class(class_id):
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM sections WHERE class_id = ?", (class_id,))
         sections = cursor.fetchall()
@@ -52,7 +53,7 @@ def get_sections_by_class(class_id):
 
 def get_all_sections():
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT s.id, s.name, c.name

@@ -7,8 +7,8 @@ import re
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.student_controller import get_student_names
-from modules.payment_controller import add_payment
+from core.student_controller import get_student_names
+from core.payment_controller import add_payment
 
 class PaymentView(tk.Frame):
     def __init__(self, master=None):

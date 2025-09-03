@@ -7,8 +7,8 @@ import csv
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.student_controller import get_all_students
-from modules.admission_letter import generate_admission_letter
+from core.student_controller import get_all_students
+from core.admission_letter import generate_admission_letter
 from .student_profile_view import StudentProfileView
 
 class StudentListView(tk.Frame):

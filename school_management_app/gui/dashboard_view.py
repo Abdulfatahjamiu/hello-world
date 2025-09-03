@@ -7,7 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.dashboard_controller import get_dashboard_stats
+from core.dashboard_controller import get_dashboard_stats
 # Import all the other views for navigation
 from .preregistration_view import PreregistrationView
 from .parent_list_view import ParentListView

@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 from datetime import datetime
 
@@ -23,7 +24,7 @@ def add_student(name, dob, address1, city, state, zip_code, class_name, gender, 
             shutil.copy(photo_path, os.path.join('..', dest_path))
             new_photo_path = dest_path
 
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         registration_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -45,7 +46,7 @@ def get_all_students():
     Retrieves all students from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -66,7 +67,7 @@ def get_student_names():
     Retrieves all student names from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
         cursor.execute("SELECT id, name FROM students")
@@ -83,7 +84,7 @@ def get_student_by_id(student_id):
     Retrieves a single student's details from the database by their ID.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM students WHERE id = ?", (student_id,))
         student = cursor.fetchone()

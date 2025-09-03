@@ -7,7 +7,7 @@ import csv
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.bus_controller import add_bus, get_all_buses
+from core.bus_controller import add_bus, get_all_buses
 
 class BusView(tk.Frame):
     def __init__(self, master=None):
