@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 
 def add_driver(name, phone_number, license_number):
@@ -5,7 +6,7 @@ def add_driver(name, phone_number, license_number):
     Adds a new driver to the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO drivers (name, phone_number, license_number) VALUES (?, ?, ?)", (name, phone_number, license_number))
         conn.commit()
@@ -20,7 +21,7 @@ def get_all_drivers():
     Retrieves all drivers from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM drivers")
         drivers = cursor.fetchall()

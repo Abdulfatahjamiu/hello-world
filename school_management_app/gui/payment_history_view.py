@@ -7,8 +7,8 @@ import csv
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.payment_controller import get_all_payments
-from modules.payment_receipt import generate_payment_receipt
+from core.payment_controller import get_all_payments
+from core.payment_receipt import generate_payment_receipt
 
 class PaymentHistoryView(tk.Frame):
     def __init__(self, master=None):

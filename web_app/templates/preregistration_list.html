@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pre-Registration List</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        body { font-family: "Spline Sans", "Noto Sans", sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <div class="flex min-h-screen">
+        <!-- Sidebar Placeholder -->
+        <aside class="w-64 flex-shrink-0 bg-slate-800 p-6">
+            <h1 class="text-xl font-bold mb-10">SchoolReg Web</h1>
+            <nav class="flex flex-col gap-4">
+                <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('prereg.list_inquiries') }}">Pre-Registration</a>
+                <!-- Other links -->
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-10">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold">Pre-Registered Parents</h1>
+                <a href="{{ url_for('prereg.new') }}" class="flex items-center justify-center gap-2 rounded-full h-12 px-6 bg-[#38e07b] text-slate-900 text-base font-bold">
+                    <span>Add New Inquiry</span>
+                </a>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-slate-700 bg-slate-800">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-900/50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Name</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Phone</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Email</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Enquiry Date</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Follow-up Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        {% for parent in parents %}
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">{{ parent.name }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ parent.phone_number }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ parent.email }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ parent.enquiry_date }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ parent.follow_up_date }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center py-10 text-slate-500">No pre-registrations found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

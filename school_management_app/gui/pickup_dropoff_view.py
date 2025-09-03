@@ -6,7 +6,7 @@ import os
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.student_bus_controller import get_all_assignments, update_pickup_status, update_dropoff_status
+from core.student_bus_controller import get_all_assignments, update_pickup_status, update_dropoff_status
 
 class PickupDropoffView(tk.Frame):
     def __init__(self, master=None):

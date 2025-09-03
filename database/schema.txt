@@ -112,3 +112,10 @@ CREATE TABLE student_class_assignments (
     FOREIGN KEY (section_id) REFERENCES sections(id),
     FOREIGN KEY (term_id) REFERENCES terms(id)
 );
+
+-- User Authentication
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL
+);

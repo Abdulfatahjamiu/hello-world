@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Bus Assignment</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        body { font-family: "Spline Sans", "Noto Sans", sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <div class="flex min-h-screen">
+        <!-- Sidebar Placeholder -->
+        <aside class="w-64 flex-shrink-0 bg-slate-800 p-6">
+            <h1 class="text-xl font-bold mb-10">SchoolReg Web</h1>
+            <nav class="flex flex-col gap-4">
+                <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+                <!-- Other links -->
+                 <a href="{{ url_for('bus.list_assignments') }}">Bus Management</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-10">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold">Student Bus Assignments</h1>
+                <!-- Add New Assignment button can be added here -->
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-slate-700 bg-slate-800">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-900/50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Student</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Route</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Bus Number</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Driver</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Pickup Status</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Dropoff Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        {% for assignment in assignments %}
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">{{ assignment[2] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ assignment[3] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ assignment[4] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ assignment[5] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ assignment[6] or 'N/A' }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ assignment[7] or 'N/A' }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center py-10 text-slate-500">No assignments found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

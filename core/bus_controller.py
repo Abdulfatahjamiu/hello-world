@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 
 def add_bus(bus_number, capacity):
@@ -5,7 +6,7 @@ def add_bus(bus_number, capacity):
     Adds a new bus to the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO buses (bus_number, capacity) VALUES (?, ?)", (bus_number, capacity))
         conn.commit()
@@ -20,7 +21,7 @@ def get_all_buses():
     Retrieves all buses from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM buses")
         buses = cursor.fetchall()

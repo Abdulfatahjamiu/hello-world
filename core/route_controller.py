@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 
 def add_route(name, bus_id, driver_id):
@@ -5,7 +6,7 @@ def add_route(name, bus_id, driver_id):
     Adds a new route to the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO routes (name, bus_id, driver_id) VALUES (?, ?, ?)", (name, bus_id, driver_id))
         conn.commit()
@@ -20,7 +21,7 @@ def get_all_routes():
     Retrieves all routes from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT r.id, r.name, b.bus_number, d.name
@@ -40,7 +41,7 @@ def get_bus_numbers():
     Retrieves all bus numbers from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT id, bus_number FROM buses")
         buses = cursor.fetchall()
@@ -55,7 +56,7 @@ def get_driver_names():
     Retrieves all driver names from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT id, name FROM drivers")
         drivers = cursor.fetchall()

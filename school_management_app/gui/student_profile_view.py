@@ -6,8 +6,8 @@ import os
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.student_controller import get_student_by_id
-from modules.id_card_generator import generate_id_card
+from core.student_controller import get_student_by_id
+from core.id_card_generator import generate_id_card
 
 class StudentProfileView(tk.Frame):
     def __init__(self, master=None, student_id=None):

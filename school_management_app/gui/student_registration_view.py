@@ -7,8 +7,8 @@ import re
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.preregistration_controller import get_parent_names
-from modules.student_controller import add_student
+from core.preregistration_controller import get_parent_names
+from core.student_controller import add_student
 
 class StudentRegistrationView(tk.Frame):
     def __init__(self, master=None):

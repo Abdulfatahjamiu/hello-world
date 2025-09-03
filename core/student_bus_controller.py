@@ -1,3 +1,4 @@
+from .config import DATABASE_PATH
 import sqlite3
 
 def assign_student_to_route(student_id, route_id):
@@ -5,7 +6,7 @@ def assign_student_to_route(student_id, route_id):
     Assigns a student to a bus route.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO student_bus (student_id, route_id) VALUES (?, ?)", (student_id, route_id))
         conn.commit()
@@ -20,7 +21,7 @@ def get_all_assignments():
     Retrieves all student-route assignments from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT s.id, r.id, s.name, r.name, b.bus_number, d.name, sb.pickup_status, sb.dropoff_status
@@ -42,7 +43,7 @@ def get_route_names():
     Retrieves all route names from the database.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT id, name FROM routes")
         routes = cursor.fetchall()
@@ -57,7 +58,7 @@ def update_pickup_status(student_id, route_id, status):
     Updates the pickup status for a student on a route.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("UPDATE student_bus SET pickup_status = ? WHERE student_id = ? AND route_id = ?", (status, student_id, route_id))
         conn.commit()
@@ -72,7 +73,7 @@ def update_dropoff_status(student_id, route_id, status):
     Updates the dropoff status for a student on a route.
     """
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("UPDATE student_bus SET dropoff_status = ? WHERE student_id = ? AND route_id = ?", (status, student_id, route_id))
         conn.commit()

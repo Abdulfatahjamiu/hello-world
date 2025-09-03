@@ -6,7 +6,7 @@ import os
 
 # Add the parent directory to the path to import the controller
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from modules.class_management_controller import add_class, get_all_classes, add_section, get_sections_by_class
+from core.class_management_controller import add_class, get_all_classes, add_section, get_sections_by_class
 
 class ClassManagementView(tk.Frame):
     def __init__(self, master=None):

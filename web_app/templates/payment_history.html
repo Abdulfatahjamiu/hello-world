@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment History</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        body { font-family: "Spline Sans", "Noto Sans", sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <div class="flex min-h-screen">
+        <!-- Sidebar Placeholder -->
+        <aside class="w-64 flex-shrink-0 bg-slate-800 p-6">
+            <h1 class="text-xl font-bold mb-10">SchoolReg Web</h1>
+            <nav class="flex flex-col gap-4">
+                <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('prereg.list_inquiries') }}">Pre-Registration</a>
+                <a href="{{ url_for('enroll.list_students') }}">Students</a>
+                <a href="{{ url_for('pay.history') }}">Payments</a>
+                <!-- Other links -->
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-10">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold">Payment History</h1>
+                <a href="{{ url_for('pay.new') }}" class="flex items-center justify-center gap-2 rounded-full h-12 px-6 bg-[#38e07b] text-slate-900 text-base font-bold">
+                    <span>Record New Payment</span>
+                </a>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-slate-700 bg-slate-800">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-900/50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Student</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Amount</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Account</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Date</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Academic Year</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Term</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        {% for payment in payments %}
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">{{ payment[1] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">${{ "%.2f"|format(payment[2]) }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ payment[3] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ payment[4] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ payment[5] }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-400">{{ payment[6] }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center py-10 text-slate-500">No payments found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

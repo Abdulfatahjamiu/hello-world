@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-[#122118] text-white" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="flex min-h-screen">
+<aside class="w-64 flex-shrink-0 bg-[#1A3223] p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="size-8 text-[#38e07b]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold">SchoolReg</h1>
+</div>
+<nav class="flex flex-col gap-4">
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/70 hover:bg-[#264532] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg bg-[#264532] px-4 py-2 text-white" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Students</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/70 hover:bg-[#264532] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">payment</span>
+<span>Payments</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/70 hover:bg-[#264532] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+<span>Bus Services</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1">
+<header class="flex items-center justify-between border-b border-solid border-b-[#264532] px-10 py-4">
+<h2 class="text-2xl font-bold">New Student Registration</h2>
+<div class="flex items-center gap-4">
+<button class="flex size-10 items-center justify-center rounded-full bg-[#1A3223] text-white/70 hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2wLiXdPDDSo2QtU-1oRLewG80d5bGQKz3fNdsnzt-FFLgv7tWYMHZQzdjrWkHtOaMTp3sJJkrS1OeIm8ZxjmBKD2W6zMF2Yj_G37MRwh6NN5WeCPCly0brXMlzSAQjS9WNMqQzkvyUER9swpmii5sUc0dJJJGm54o-jwFAEfRzCxek6is6xHQze8SMEbMu1ds_jYGv-IQO-3nSpuJQmBCiyvtH9Bnv2ZaUgJ89rc523D-vmnNZf98TdFqr7WW6vZosnQQW29sak6W");'></div>
+</div>
+</header>
+<div class="p-10">
+<div class="mx-auto max-w-4xl rounded-2xl bg-[#1A3223] p-8">
+<div class="mb-8">
+<div class="flex items-center justify-between mb-2">
+<p class="font-medium text-white/90">Step 1 of 4: Student Details</p>
+<p class="text-sm text-white/60">25% Complete</p>
+</div>
+<div class="h-2 w-full rounded-full bg-[#264532]">
+<div class="h-2 w-1/4 rounded-full bg-[#38e07b]"></div>
+</div>
+</div>
+<form class="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="first-name">First Name</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="first-name" placeholder="Enter first name" type="text"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="last-name">Last Name</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="last-name" placeholder="Enter last name" type="text"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="dob">Date of Birth</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="dob" placeholder="MM/DD/YYYY" type="text"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="gender">Gender</label>
+<select class="w-full appearance-none rounded-lg border-none bg-[#264532] p-3 text-white focus:ring-2 focus:ring-[#38e07b]" id="gender">
+<option>Select gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="mb-2 block text-sm font-medium text-white/90" for="address">Address</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="address" placeholder="Enter address" type="text"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="city">City</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="city" placeholder="Enter city" type="text"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="state">State</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="state" placeholder="Enter state" type="text"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="zip">Zip Code</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="zip" placeholder="Enter zip code" type="text"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/90" for="phone">Phone Number</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="phone" placeholder="(XXX) XXX-XXXX" type="tel"/>
+</div>
+<div class="md:col-span-2">
+<label class="mb-2 block text-sm font-medium text-white/90" for="email">Email</label>
+<input class="w-full rounded-lg border-none bg-[#264532] p-3 text-white placeholder:text-white/50 focus:ring-2 focus:ring-[#38e07b]" id="email" placeholder="Enter email" type="email"/>
+</div>
+<div class="md:col-span-2 flex justify-end mt-6">
+<button class="flex items-center gap-2 rounded-full bg-[#38e07b] px-6 py-3 text-sm font-bold text-[#122118] transition-colors hover:bg-opacity-80">
+<span>Next Step</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</main>
+</div>
+</body></html>

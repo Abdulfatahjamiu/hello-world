@@ -1,8 +1,10 @@
+from .config import DATABASE_PATH
 import sqlite3
+from .config import DATABASE_PATH
 
 def add_academic_year(year):
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO academic_years (year) VALUES (?)", (year,))
         conn.commit()
@@ -16,7 +18,7 @@ def add_academic_year(year):
 
 def get_all_academic_years():
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM academic_years")
         years = cursor.fetchall()
@@ -28,7 +30,7 @@ def get_all_academic_years():
 
 def add_term(name, year_id, start_date, end_date):
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO terms (name, academic_year_id, start_date, end_date) VALUES (?, ?, ?, ?)", (name, year_id, start_date, end_date))
         conn.commit()
@@ -40,7 +42,7 @@ def add_term(name, year_id, start_date, end_date):
 
 def get_terms_by_year(year_id):
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM terms WHERE academic_year_id = ?", (year_id,))
         terms = cursor.fetchall()
@@ -52,7 +54,7 @@ def get_terms_by_year(year_id):
 
 def get_all_terms():
     try:
-        conn = sqlite3.connect('../database/school.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT t.id, t.name, ay.year

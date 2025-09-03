@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-[#122118]">
+<div class="relative flex size-full min-h-screen flex-col dark group/design-root" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="#38e07b"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Acme School</h2>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-[#96c5a9] hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-[#96c5a9] hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Pre-registration</a>
+<a class="text-[#96c5a9] hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Enrollment</a>
+<a class="text-white text-sm font-bold leading-normal relative" href="#">Payments
+              <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#38e07b] rounded-full"></span>
+</a>
+<a class="text-[#96c5a9] hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Bus Services</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex size-10 items-center justify-center rounded-full text-[#96c5a9] hover:bg-[#264532] hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl"> notifications </span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8UKofnw6pMT3cjt9h39Uvd23_bYisg2iFZwuRKNttRasp8rMNKY1sZPkgc_a4lKyHTF6L-MDMQX-cGj6TWLTpApFMAqtHJvx5417IzS2KeOCG6F2EkJbhFI5lsvTqoghuYcWZNBR8BbbuSeWU36rV1m48YscyRJ3_TwcJwy-MAEbiqqiG-Qot-34OfEFGukPdbdNJTvmLkvckLAN6Xm9iBWegZDiK440_11c21bEEZ-29a0xEc9pIOCX7PT5wMKV3PnMb38URy3qa");'></div>
+</div>
+</header>
+<main class="flex-1 px-10 py-8">
+<div class="mx-auto max-w-5xl">
+<div class="mb-8">
+<h1 class="text-white text-4xl font-bold leading-tight tracking-tight">Record Payment</h1>
+<p class="text-[#96c5a9] mt-1">Log and categorize payments made into the school fees account.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="space-y-6">
+<h2 class="text-white text-2xl font-bold">Payment Details</h2>
+<div class="space-y-4">
+<label class="flex flex-col gap-2">
+<p class="text-white text-sm font-medium">Student ID</p>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[#96c5a9]">badge</span>
+<select class="form-select w-full appearance-none rounded-xl border border-[#366348] bg-[#1b3124] py-3 pl-10 pr-4 text-white focus:border-[#38e07b] focus:ring-[#38e07b]" name="student_id">
+    {% for student in students %}
+    <option value="{{ student.id }}">{{ student.name }}</option>
+    {% endfor %}
+</select>
+</div>
+</label>
+<label class="flex flex-col gap-2">
+<p class="text-white text-sm font-medium">Payment Amount</p>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[#96c5a9]">attach_money</span>
+<input class="form-input w-full rounded-xl border border-[#366348] bg-[#1b3124] py-3 pl-10 pr-4 text-white placeholder:text-[#96c5a9] focus:border-[#38e07b] focus:ring-[#38e07b]" placeholder="Enter amount" type="number" name="amount" required/>
+</div>
+</label>
+<label class="flex flex-col gap-2">
+<p class="text-white text-sm font-medium">Date of Payment</p>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[#96c5a9]">calendar_today</span>
+<input class="form-input w-full rounded-xl border border-[#366348] bg-[#1b3124] py-3 pl-10 pr-4 text-white placeholder:text-[#96c5a9] focus:border-[#38e07b] focus:ring-[#38e07b]" type="date" name="payment_date" required/>
+</div>
+</label>
+<label class="flex flex-col gap-2">
+<p class="text-white text-sm font-medium">Payment Account</p>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[#96c5a9]">account_balance</span>
+<select class="form-select w-full appearance-none rounded-xl border border-[#366348] bg-[#1b3124] py-3 pl-10 pr-4 text-white focus:border-[#38e07b] focus:ring-[#38e07b]" name="account">
+<option value="School Fees">School Fees</option>
+<option value="Materials">Materials</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 text-[#96c5a9] pointer-events-none">expand_more</span>
+</div>
+</label>
+</div>
+<div class="flex justify-end pt-4">
+<button class="flex items-center justify-center gap-2 rounded-full h-12 px-6 bg-[#38e07b] text-[#122118] text-base font-bold transition-transform hover:scale-105">
+<span class="material-symbols-outlined">add_card</span>
+<span class="truncate">Record Payment</span>
+</button>
+</div>
+</div>
+<div class="space-y-6">
+<h2 class="text-white text-2xl font-bold">Previous Payments for STU-12345</h2>
+<div class="rounded-xl border border-[#366348] bg-[#1b3124] overflow-hidden">
+<table class="w-full">
+<thead class="bg-[#264532]">
+<tr>
+<th class="px-4 py-3 text-left text-sm font-medium text-white">Date</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-white">Amount</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-white">Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-t border-t-[#366348]">
+<td class="px-4 py-3 text-sm text-[#96c5a9]">2023-08-15</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">$500.00</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">Credit Card</td>
+</tr>
+<tr class="border-t border-t-[#366348]">
+<td class="px-4 py-3 text-sm text-[#96c5a9]">2023-07-15</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">$500.00</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">Credit Card</td>
+</tr>
+<tr class="border-t border-t-[#366348]">
+<td class="px-4 py-3 text-sm text-[#96c5a9]">2023-06-15</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">$500.00</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">Credit Card</td>
+</tr>
+<tr class="border-t border-t-[#366348]">
+<td class="px-4 py-3 text-sm text-[#96c5a9]">2023-05-15</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">$500.00</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">Bank Transfer</td>
+</tr>
+<tr class="border-t border-t-[#366348]">
+<td class="px-4 py-3 text-sm text-[#96c5a9]">2023-04-15</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">$500.00</td>
+<td class="px-4 py-3 text-sm text-[#96c5a9]">Cash</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

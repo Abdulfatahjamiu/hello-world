@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html><head>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<meta charset="utf-8"/>
+</head>
+<body class="bg-[#122118] text-white">
+<div class="relative flex size-full min-h-screen flex-col dark group/design-root" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="flex flex-col lg:flex-row h-full grow">
+<aside class="flex-shrink-0 w-full lg:w-64 bg-[#122118] border-b lg:border-b-0 lg:border-r border-solid border-[#264532] p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="p-2 bg-[#264532] rounded-lg">
+<svg class="text-[#38e07b]" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2 7L12 12M22 7L12 12M12 22V12M17 4.5L7 9.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">School Admin</h1>
+</div>
+<nav class="flex flex-row lg:flex-col items-center lg:items-start justify-between">
+<div class="flex flex-row lg:flex-col gap-2 w-full">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white hover:bg-[#264532] transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white hover:bg-[#264532] transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Students</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#264532] text-white transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white hover:bg-[#264532] transition-colors" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+<span class="text-sm font-medium">Bus Services</span>
+</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex lg:hidden max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#264532] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<div class="text-white" data-icon="Bell" data-size="20px" data-weight="regular">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+</svg>
+</div>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGVuEs-eRdtd_MCwZoe7uERNmQMqRV4KJ0zpOXe6Y6XE6VNygmqYkxEu4PMNNa6ygUdvb0wqqLGpjHUz6slcazWrd4pOjCVnJvYNSvZxJIQLYmgSROAOXC86wHNjbwnGrJrzzEwE-xwMhcrh38fwi7zSUpkEHvvn8mcVxIGoz_T4lQmS28HzxigEUMEeEhNbDtCCTYlIQXaGLdH6x6nuHYSM4D4KX2wLcLnYbIvIoXH7Erq-HqtAoA_zlhThN3nMl5rL9t_lcLVKSQ");'></div>
+</div>
+</nav>
+</aside>
+<main class="flex-1 overflow-y-auto">
+<header class="hidden lg:flex items-center justify-end whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-5">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-[#264532] text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGVuEs-eRdtd_MCwZoe7uERNmQMqRV4KJ0zpOXe6Y6XE6VNygmqYkxEu4PMNNa6ygUdvb0wqqLGpjHUz6slcazWrd4pOjCVnJvYNSvZxJIQLYmgSROAOXC86wHNjbwnGrJrzzEwE-xwMhcrh38fwi7zSUpkEHvvn8mcVxIGoz_T4lQmS28HzxigEUMEeEhNbDtCCTYlIQXaGLdH6x6nuHYSM4D4KX2wLcLnYbIvIoXH7Erq-HqtAoA_zlhThN3nMl5rL9t_lcLVKSQ");'></div>
+</div>
+</header>
+<div class="p-6 lg:p-10">
+<div class="max-w-7xl mx-auto">
+<div class="mb-8 flex flex-wrap items-start justify-between gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl font-bold leading-tight tracking-tighter">Bus Service Management</h1>
+<p class="text-gray-400 text-base font-normal leading-normal">Manage student bus service subscriptions, link students to routes, and define pick-up/drop-off points.</p>
+</div>
+<button class="flex items-center justify-center gap-2 rounded-full bg-[var(--primary-color)] px-5 py-3 text-sm font-bold text-gray-900 transition-colors hover:bg-green-400" type="submit" form="add-bus-form">
+    <span class="material-symbols-outlined"> add </span>
+    Add New Bus
+</button>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2">
+        <h3 class="text-xl font-semibold mb-4 text-white">Existing Buses</h3>
+        <div class="overflow-hidden rounded-2xl border border-gray-700 bg-gray-800">
+            <table class="w-full text-left">
+                <thead class="bg-gray-900/50">
+                    <tr>
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-400">ID</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-400">Bus Number</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-400">Capacity</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-700">
+                    {% for bus in buses %}
+                    <tr>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">{{ bus.id }}</td>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">{{ bus.bus_number }}</td>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">{{ bus.capacity }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center py-10 text-gray-500">No buses found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="lg:col-span-1">
+        <h3 class="text-xl font-semibold mb-4 text-white">Add Bus</h3>
+        <form id="add-bus-form" method="POST" action="{{ url_for('bus.list_buses') }}" class="space-y-6 bg-gray-800 p-6 rounded-2xl">
+            <div>
+                <label class="block text-sm font-medium text-gray-300" for="bus_number">Bus Number</label>
+                <input type="text" name="bus_number" id="bus_number" class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-green-500 focus:ring-green-500 text-white" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-300" for="capacity">Capacity</label>
+                <input type="number" name="capacity" id="capacity" class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-green-500 focus:ring-green-500 text-white" required>
+            </div>
+        </form>
+    </div>
+</div>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">Ethan Walker</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">2023-002</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Route B</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Corner Store</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Library</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white">
+<span class="material-symbols-outlined text-base"> more_horiz </span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">Olivia Green</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">2023-003</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Route A</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Park Avenue</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">School Gate</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white">
+<span class="material-symbols-outlined text-base"> more_horiz </span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">Noah Hill</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">2023-004</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Route C</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Community Center</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Main Entrance</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white">
+<span class="material-symbols-outlined text-base"> more_horiz </span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-white">Ava Scott</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">2023-005</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Route B</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Bus Stop 1</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400">Library</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white">
+<span class="material-symbols-outlined text-base"> more_horiz </span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
