@@ -4,7 +4,6 @@ from tkinter import messagebox
 import sys
 import os
 import re
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from core.student_controller import get_student_names
 from core.payment_controller import add_payment
@@ -58,38 +57,47 @@ class PaymentView(tk.Frame):
         self.submit_button.pack(pady=10)
 
     def load_students(self):
-        self.students = get_student_names()
-        self.student_dropdown['values'] = [f"{name} (ID: {sid})" for sid, name in self.students]
+        students = get_student_names()
+        self.student_map = {f"{name} (ID: {sid})": sid for sid, name in students}
+        self.student_dropdown['values'] = list(self.student_map.keys())
 
     def submit_form(self):
         student_info = self.student_var.get()
-        amount_str = self.entries['amount'].get()
+        amount = self.amount_entry.get()
         account = self.account_var.get()
-        payment_date = self.entries['payment_date'].get()
+        payment_date = self.date_entry.get()
         academic_year = self.year_var.get()
         term = self.term_var.get()
 
-        if not all([student_info, amount_str, account, payment_date, academic_year, term]):
+        if not all([student_info, amount, account, payment_date, academic_year, term]):
             messagebox.showerror("Error", "All fields are required.")
             return
-
+        
         try:
-            amount = float(amount_str.replace(',', ''))
+            amount_float = float(amount.replace(',', ''))
         except ValueError:
             messagebox.showerror("Error", "Invalid amount. Please enter a valid number.")
             return
 
-        match = re.search(r'\(ID: (\d+)\)', student_info)
-        if not match:
+        student_id = self.student_map.get(student_info)
+        if not student_id:
             messagebox.showerror("Error", "Invalid student selected.")
             return
-        student_id = int(match.group(1))
 
-        if add_payment(student_id, amount, account, payment_date, academic_year, term):
+        if add_payment(student_id, amount_float, account, payment_date, academic_year, term):
             messagebox.showinfo("Success", "Payment recorded successfully!")
-            self.master.destroy() # Close window on success
+            self.clear_form()
         else:
             messagebox.showerror("Error", "Failed to record payment.")
+
+    def clear_form(self):
+        """Clears all input fields in the form."""
+        self.student_var.set('')
+        for entry in self.entries.values():
+            entry.delete(0, tk.END)
+        self.account_var.set('')
+        self.year_var.set('')
+        self.term_var.set('')
 
 if __name__ == '__main__':
     root = tk.Tk()

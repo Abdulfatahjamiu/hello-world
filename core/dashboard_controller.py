@@ -1,5 +1,5 @@
-import sqlite3
 from .config import DATABASE_PATH
+import sqlite3
 
 def get_dashboard_stats():
     """
@@ -9,12 +9,16 @@ def get_dashboard_stats():
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
 
+        # Total students
         cursor.execute("SELECT COUNT(*) FROM students")
         total_students = cursor.fetchone()[0]
 
+        # Total payments
         cursor.execute("SELECT SUM(amount) FROM payments")
         total_payments = cursor.fetchone()[0] or 0
 
+        # Pending pre-registrations (example: where follow-up date is not null and in the future)
+        # This is just a placeholder logic
         cursor.execute("SELECT COUNT(*) FROM parents WHERE follow_up_date IS NOT NULL")
         pending_preregistrations = cursor.fetchone()[0]
 

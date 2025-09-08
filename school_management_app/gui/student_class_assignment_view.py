@@ -26,17 +26,17 @@ class StudentClassAssignmentView(tk.Frame):
 
         tk.Label(form_frame, text="Student:").grid(row=0, column=0, sticky=tk.W)
         self.student_var = tk.StringVar()
-        self.student_dropdown = ttk.Combobox(form_frame, textvariable=self.student_var, state="readonly")
+        self.student_dropdown = ttk.Combobox(form_frame, textvariable=self.student_var, width=28, state="readonly")
         self.student_dropdown.grid(row=0, column=1, pady=5)
 
         tk.Label(form_frame, text="Term:").grid(row=1, column=0, sticky=tk.W)
         self.term_var = tk.StringVar()
-        self.term_dropdown = ttk.Combobox(form_frame, textvariable=self.term_var, state="readonly")
+        self.term_dropdown = ttk.Combobox(form_frame, textvariable=self.term_var, width=28, state="readonly")
         self.term_dropdown.grid(row=1, column=1, pady=5)
 
         tk.Label(form_frame, text="Class Section:").grid(row=2, column=0, sticky=tk.W)
         self.section_var = tk.StringVar()
-        self.section_dropdown = ttk.Combobox(form_frame, textvariable=self.section_var, state="readonly")
+        self.section_dropdown = ttk.Combobox(form_frame, textvariable=self.section_var, width=28, state="readonly")
         self.section_dropdown.grid(row=2, column=1, pady=5)
 
         self.assign_button = tk.Button(form_frame, text="Assign", command=self.assign)
@@ -52,12 +52,17 @@ class StudentClassAssignmentView(tk.Frame):
         self.tree.pack(fill="both", expand=True)
 
     def load_data(self):
-        self.students = get_student_names()
-        self.student_dropdown['values'] = [f"{name} (ID: {sid})" for sid, name in self.students]
-        self.terms = get_all_terms()
-        self.term_dropdown['values'] = [f"{name} {year} (ID: {tid})" for tid, name, year in self.terms]
-        self.sections = get_all_sections()
-        self.section_dropdown['values'] = [f"{class_name} - {sec_name} (ID: {sid})" for sid, sec_name, class_name in self.sections]
+        students = get_student_names()
+        self.student_map = {f"{name} (ID: {sid})": sid for sid, name in students}
+        self.student_dropdown['values'] = list(self.student_map.keys())
+
+        terms = get_all_terms()
+        self.term_map = {f"{name} {year} (ID: {tid})": tid for tid, name, year in terms}
+        self.term_dropdown['values'] = list(self.term_map.keys())
+
+        sections = get_all_sections()
+        self.section_map = {f"{class_name} - {sec_name} (ID: {sid})": sid for sid, sec_name, class_name in sections}
+        self.section_dropdown['values'] = list(self.section_map.keys())
         self.load_assignments()
 
     def load_assignments(self):
@@ -76,16 +81,21 @@ class StudentClassAssignmentView(tk.Frame):
             messagebox.showerror("Error", "All fields are required.")
             return
 
-        student_id = int(re.search(r'\(ID: (\d+)\)', student_info).group(1))
-        term_id = int(re.search(r'\(ID: (\d+)\)', term_info).group(1))
-        section_id = int(re.search(r'\(ID: (\d+)\)', section_info).group(1))
+        student_id = self.student_map.get(student_info)
+        term_id = self.term_map.get(term_info)
+        section_id = self.section_map.get(section_info)
 
         result = assign_student_to_class(student_id, section_id, term_id)
         if result is True:
             messagebox.showinfo("Success", "Student assigned to class successfully!")
             self.load_assignments()
-        else:
+            self.student_var.set('')
+            self.term_var.set('')
+            self.section_var.set('')
+        elif result == "Student already assigned for this term":
             messagebox.showerror("Error", result)
+        else:
+            messagebox.showerror("Error", "Failed to assign student to class.")
 
 if __name__ == '__main__':
     root = tk.Tk()

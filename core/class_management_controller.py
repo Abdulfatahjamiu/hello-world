@@ -1,5 +1,5 @@
-import sqlite3
 from .config import DATABASE_PATH
+import sqlite3
 
 def add_class(name):
     try:
@@ -55,7 +55,11 @@ def get_all_sections():
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
-        cursor.execute("SELECT s.id, s.name, c.name FROM sections s JOIN classes c ON s.class_id = c.id")
+        cursor.execute("""
+            SELECT s.id, s.name, c.name
+            FROM sections s
+            JOIN classes c ON s.class_id = c.id
+        """)
         sections = cursor.fetchall()
         conn.close()
         return sections

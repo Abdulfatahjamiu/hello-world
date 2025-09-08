@@ -69,8 +69,9 @@ class StudentRegistrationView(tk.Frame):
         self.submit_button.pack(pady=10)
 
     def load_parents(self):
-        self.parents = get_parent_names()
-        self.parent_dropdown['values'] = [f"{name} (ID: {pid})" for pid, name in self.parents]
+        parents = get_parent_names()
+        self.parent_map = {f"{name} (ID: {pid})": pid for pid, name in parents}
+        self.parent_dropdown['values'] = list(self.parent_map.keys())
 
     def upload_photo(self):
         filepath = filedialog.askopenfilename(title="Select Student Photo", filetypes=(("Image files", "*.jpg *.jpeg *.png"), ("All files", "*.*")))
@@ -87,11 +88,10 @@ class StudentRegistrationView(tk.Frame):
             messagebox.showerror("Error", "All fields except Medical Info and Photo are required.")
             return
 
-        match = re.search(r'\(ID: (\d+)\)', parent_info)
-        if not match:
+        parent_id = self.parent_map.get(parent_info)
+        if not parent_id:
             messagebox.showerror("Error", "Invalid parent selected.")
             return
-        parent_id = int(match.group(1))
 
         if add_student(data['name'], data['dob'], data['address1'], data['city'], data['state'], data['zip_code'], data['class'], data['gender'], data['medical_info'], data['photo_path'], parent_id):
             messagebox.showinfo("Success", "Student registered successfully!")

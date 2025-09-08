@@ -1,5 +1,5 @@
-import sqlite3
 from .config import DATABASE_PATH
+import sqlite3
 
 def add_academic_year(year):
     try:
@@ -55,7 +55,11 @@ def get_all_terms():
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
-        cursor.execute("SELECT t.id, t.name, ay.year FROM terms t JOIN academic_years ay ON t.academic_year_id = ay.id")
+        cursor.execute("""
+            SELECT t.id, t.name, ay.year
+            FROM terms t
+            JOIN academic_years ay ON t.academic_year_id = ay.id
+        """)
         terms = cursor.fetchall()
         conn.close()
         return terms

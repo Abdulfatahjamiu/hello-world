@@ -23,13 +23,11 @@ class PaymentReportView(tk.Frame):
         filter_frame = tk.LabelFrame(self, text="Filters", padx=10, pady=10)
         filter_frame.pack(fill="x", expand="yes", padx=10, pady=5)
 
-        # Filters
         self.student_label = tk.Label(filter_frame, text="Student:")
         self.student_label.grid(row=0, column=0, sticky=tk.W, pady=5)
         self.student_var = tk.StringVar()
         self.student_dropdown = ttk.Combobox(filter_frame, textvariable=self.student_var, width=28, state="readonly")
         self.student_dropdown.grid(row=0, column=1, padx=5)
-
         self.start_date_label = tk.Label(filter_frame, text="Start Date (YYYY-MM-DD):")
         self.start_date_label.grid(row=1, column=0, sticky=tk.W, pady=5)
         self.start_date_entry = tk.Entry(filter_frame, width=30)
@@ -46,8 +44,21 @@ class PaymentReportView(tk.Frame):
         self.account_dropdown = ttk.Combobox(filter_frame, textvariable=self.account_var, values=["", "School Fees", "Materials"], width=28, state="readonly")
         self.account_dropdown.grid(row=3, column=1, padx=5)
 
+        # Academic Year filter
+        self.year_label = tk.Label(filter_frame, text="Academic Year:")
+        self.year_label.grid(row=4, column=0, sticky=tk.W, pady=5)
+        self.year_var = tk.StringVar()
+        self.year_dropdown = ttk.Combobox(filter_frame, textvariable=self.year_var, values=["", "2023/2024", "2024/2025", "2025/2026"], width=28, state="readonly")
+        self.year_dropdown.grid(row=4, column=1, padx=5)
+
+        self.term_label = tk.Label(filter_frame, text="Term:")
+        self.term_label.grid(row=5, column=0, sticky=tk.W, pady=5)
+        self.term_var = tk.StringVar()
+        self.term_dropdown = ttk.Combobox(filter_frame, textvariable=self.term_var, values=["", "First Term", "Second Term", "Third Term"], width=28, state="readonly")
+        self.term_dropdown.grid(row=5, column=1, padx=5)
+
         self.filter_button = tk.Button(filter_frame, text="Apply Filters", command=self.apply_filters)
-        self.filter_button.grid(row=4, column=0, columnspan=2, pady=10)
+        self.filter_button.grid(row=6, column=0, columnspan=2, pady=10)
 
         # Results table
         results_frame = tk.LabelFrame(self, text="Results", padx=10, pady=10)
@@ -57,29 +68,29 @@ class PaymentReportView(tk.Frame):
         self.tree = ttk.Treeview(results_frame, columns=self.columns, show="headings")
         for col in self.columns:
             self.tree.heading(col, text=col)
+            self.tree.column(col, width=100)
+        self.tree.column("ID", width=30)
         self.tree.pack(fill="both", expand=True)
 
         self.export_button = tk.Button(self, text="Export to CSV", command=self.export_to_csv)
         self.export_button.pack(pady=10)
 
     def load_students(self):
-        self.students = get_student_names()
-        student_names = [""] + [f"{name} (ID: {sid})" for sid, name in self.students]
+        students = get_student_names()
+        self.student_map = {f"{name} (ID: {sid})": sid for sid, name in students}
+        student_names = [""] + list(self.student_map.keys())
         self.student_dropdown['values'] = student_names
 
     def apply_filters(self):
         student_info = self.student_var.get()
-        student_id = None
-        if student_info:
-            match = re.search(r'\(ID: (\d+)\)', student_info)
-            if match:
-                student_id = int(match.group(1))
-
+        student_id = self.student_map.get(student_info)
         start_date = self.start_date_entry.get() or None
         end_date = self.end_date_entry.get() or None
         account = self.account_var.get() or None
+        academic_year = self.year_var.get() or None
+        term = self.term_var.get() or None
 
-        self.payments = get_payments_by_filter(student_id=student_id, start_date=start_date, end_date=end_date, account=account)
+        self.payments = get_payments_by_filter(student_id, start_date, end_date, account, academic_year, term)
 
         for row in self.tree.get_children():
             self.tree.delete(row)

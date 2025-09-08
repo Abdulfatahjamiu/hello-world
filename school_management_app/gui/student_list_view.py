@@ -35,6 +35,8 @@ class StudentListView(tk.Frame):
         self.refresh_button.pack(side="left", padx=5)
         self.view_profile_button = tk.Button(button_frame, text="View Profile", command=self.open_profile)
         self.view_profile_button.pack(side="left", padx=5)
+        self.generate_letter_button = tk.Button(button_frame, text="Generate Admission Letter", command=self.generate_letter)
+        self.generate_letter_button.pack(side="left", padx=5)
         self.export_button = tk.Button(button_frame, text="Export to CSV", command=self.export_to_csv)
         self.export_button.pack(side="left", padx=5)
 
@@ -43,33 +45,67 @@ class StudentListView(tk.Frame):
             self.tree.delete(row)
         self.students = get_all_students()
         for student in self.students:
+            student_id = student[0]
             # Combine address fields for display
             address = f"{student[3]}, {student[4]}, {student[5]} {student[6]}"
             display_student = student[:3] + (address,) + student[7:]
-            self.tree.insert("", "end", values=display_student)
+            self.tree.insert("", "end", values=display_student, iid=student_id)
 
     def open_profile(self):
         selected_item = self.tree.selection()
         if not selected_item:
             messagebox.showerror("Error", "Please select a student.")
             return
-        student_id = self.tree.item(selected_item)['values'][0]
+        student_id = selected_item[0] # Get ID from iid
         new_window = tk.Toplevel(self.master)
         StudentProfileView(new_window, student_id=student_id)
+
+    def generate_letter(self):
+        selected_item = self.tree.selection()
+        if not selected_item:
+            messagebox.showerror("Error", "Please select a student.")
+            return
+
+        student_id = selected_item[0] # Get ID from iid
+        # Find the full student data from the loaded list
+        student_data = None
+        for s in self.students:
+            if s[0] == int(student_id):
+                student_data = s
+                break
+        
+        if not student_data:
+            messagebox.showerror("Error", "Could not find student data.")
+            return
+
+        student_name = student_data[1]
+        class_name = student_data[4]
+        gender = student_data[5]
+        parent_name = student_data[7]
+        reg_date = student_data[8].split(" ")[0] # Get only the date part
+
+        file_name = generate_admission_letter(student_name, class_name, reg_date, parent_name, gender)
+
+        if file_name:
+            messagebox.showinfo("Success", f"Admission letter generated successfully: {file_name}")
+        else:
+            messagebox.showerror("Error", "Failed to generate admission letter.")
 
     def export_to_csv(self):
         if not hasattr(self, 'students') or not self.students:
             messagebox.showerror("Error", "No data to export.")
             return
+
         try:
             with open("students_report.csv", "w", newline="") as f:
                 writer = csv.writer(f)
                 writer.writerow(self.columns)
-                writer.writerows(self.students)
+                # Write the display-formatted data to the CSV
+                for student_id in self.tree.get_children():
+                    writer.writerow(self.tree.item(student_id)['values'])
             messagebox.showinfo("Success", "Report exported to students_report.csv")
         except Exception as e:
             messagebox.showerror("Error", f"Failed to export report: {e}")
-
 if __name__ == '__main__':
     root = tk.Tk()
     app = StudentListView(master=root)

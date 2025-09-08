@@ -35,12 +35,19 @@ class DashboardView(tk.Frame):
         self.load_stats()
 
     def create_widgets(self):
+        # Main layout
         self.main_frame = tk.Frame(self)
         self.main_frame.pack(fill="both", expand=True)
+
+        # Sidebar
         self.sidebar = tk.Frame(self.main_frame, width=200, bg="#2c3e50")
         self.sidebar.pack(side="left", fill="y")
+
+        # Main Content Area
         self.content_area = tk.Frame(self.main_frame, bg="#ecf0f1")
         self.content_area.pack(side="right", fill="both", expand=True)
+
+        # --- Sidebar Buttons ---
         self.create_sidebar_buttons()
         self.create_content_widgets()
 
@@ -68,12 +75,18 @@ class DashboardView(tk.Frame):
             btn.pack(fill="x", pady=2)
 
     def create_content_widgets(self):
+        # This frame will hold the dashboard widgets
         self.dashboard_frame = tk.Frame(self.content_area, bg="#ecf0f1")
+
+        # Stats Frame
         stats_frame = tk.Frame(self.dashboard_frame, bg="#ecf0f1")
         stats_frame.pack(fill="x", pady=10, padx=10)
+
         self.total_students_label = self.create_stat_box(stats_frame, "Total Students")
         self.total_payments_label = self.create_stat_box(stats_frame, "Total Payments")
         self.pending_prereg_label = self.create_stat_box(stats_frame, "Pending Pre-registrations")
+
+        # Chart Frame
         chart_frame = tk.Frame(self.dashboard_frame, bg="#ecf0f1")
         chart_frame.pack(fill="both", expand=True, pady=10, padx=10)
         self.fig = Figure(figsize=(5, 4), dpi=100)
@@ -96,13 +109,15 @@ class DashboardView(tk.Frame):
         self.total_students_label.config(text=stats.get("total_students", 0))
         self.total_payments_label.config(text=f"${stats.get('total_payments', 0):,.2f}")
         self.pending_prereg_label.config(text=stats.get("pending_preregistrations", 0))
+
+        # Update chart
         self.ax.clear()
         breakdown = stats.get("payment_breakdown", [])
         if breakdown:
             labels = [item[0] for item in breakdown]
             sizes = [item[1] for item in breakdown]
             self.ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
-            self.ax.axis('equal')
+            self.ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
             self.ax.set_title("Payment Breakdown by Account")
         else:
             self.ax.text(0.5, 0.5, "No payment data available", ha='center', va='center')

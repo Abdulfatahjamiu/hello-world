@@ -1,7 +1,10 @@
-import sqlite3
 from .config import DATABASE_PATH
+import sqlite3
 
 def assign_student_to_route(student_id, route_id):
+    """
+    Assigns a student to a bus route.
+    """
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
@@ -14,6 +17,9 @@ def assign_student_to_route(student_id, route_id):
         return False
 
 def get_all_assignments():
+    """
+    Retrieves all student-route assignments from the database.
+    """
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
@@ -32,7 +38,25 @@ def get_all_assignments():
         print(f"Error getting assignments: {e}")
         return []
 
+def get_route_names():
+    """
+    Retrieves all route names from the database.
+    """
+    try:
+        conn = sqlite3.connect(DATABASE_PATH)
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, name FROM routes")
+        routes = cursor.fetchall()
+        conn.close()
+        return routes
+    except Exception as e:
+        print(f"Error getting route names: {e}")
+        return []
+
 def update_pickup_status(student_id, route_id, status):
+    """
+    Updates the pickup status for a student on a route.
+    """
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
@@ -45,6 +69,9 @@ def update_pickup_status(student_id, route_id, status):
         return False
 
 def update_dropoff_status(student_id, route_id, status):
+    """
+    Updates the dropoff status for a student on a route.
+    """
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()

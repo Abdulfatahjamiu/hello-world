@@ -1,10 +1,11 @@
-import sqlite3
 from .config import DATABASE_PATH
+import sqlite3
 
 def assign_student_to_class(student_id, section_id, term_id):
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
+        # Check if the assignment already exists to prevent duplicates
         cursor.execute("SELECT * FROM student_class_assignments WHERE student_id = ? AND term_id = ?", (student_id, term_id))
         if cursor.fetchone():
             return "Student already assigned for this term"

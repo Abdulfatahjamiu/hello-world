@@ -1,7 +1,10 @@
-import sqlite3
 from .config import DATABASE_PATH
+import sqlite3
 
 def add_bus(bus_number, capacity):
+    """
+    Adds a new bus to the database.
+    """
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
@@ -14,6 +17,9 @@ def add_bus(bus_number, capacity):
         return False
 
 def get_all_buses():
+    """
+    Retrieves all buses from the database.
+    """
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()

@@ -1,5 +1,5 @@
-import sqlite3
 from .config import DATABASE_PATH
+import sqlite3
 
 def add_payment(student_id, amount, account, payment_date, academic_year, term):
     """

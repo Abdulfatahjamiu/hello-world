@@ -1,8 +1,8 @@
+from .config import DATABASE_PATH, UPLOADS_DIR
 import sqlite3
 from datetime import datetime
 import shutil
 import os
-from .config import DATABASE_PATH
 
 def add_student(name, dob, address1, city, state, zip_code, class_name, gender, medical_info, photo_path, parent_id):
     """
@@ -12,16 +12,14 @@ def add_student(name, dob, address1, city, state, zip_code, class_name, gender, 
         # Handle photo upload
         new_photo_path = ""
         if photo_path:
-            # Construct path relative to this file's location to find project root
-            project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-            upload_dir = os.path.join(project_root, 'uploads')
-            os.makedirs(upload_dir, exist_ok=True)
+            os.makedirs(UPLOADS_DIR, exist_ok=True)
 
             _, extension = os.path.splitext(photo_path)
             new_filename = f"{name.replace(' ', '_')}_{datetime.now().timestamp()}{extension}"
-            dest_path_abs = os.path.join(upload_dir, new_filename)
+            dest_path_abs = os.path.join(UPLOADS_DIR, new_filename)
 
             shutil.copy(photo_path, dest_path_abs)
+            # Store a relative path in the database for portability
             new_photo_path = os.path.join('uploads', new_filename)
 
         conn = sqlite3.connect(DATABASE_PATH)
@@ -45,7 +43,6 @@ def get_all_students():
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
-        # Corrected query with new address fields
         cursor.execute("""
             SELECT s.id, s.name, s.date_of_birth, s.address_line_1, s.city, s.state, s.zip_code, s.class, s.gender, s.medical_info, p.name, s.registration_date
             FROM students s

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-[#122118] text-white" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="flex min-h-screen">
+<aside class="w-64 flex-shrink-0 bg-[#1A3223] p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="size-8 text-[#38e07b]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold">SchoolReg</h1>
+</div>
+<nav class="flex flex-col gap-4">
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/70 hover:bg-[#264532] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg bg-[#264532] px-4 py-2 text-white" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Students</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/70 hover:bg-[#264532] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">payment</span>
+<span>Payments</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/70 hover:bg-[#264532] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+<span>Bus Services</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1">
+<header class="flex items-center justify-between border-b border-solid border-b-[#264532] px-10 py-4">
+<h2 class="text-2xl font-bold">Student Enrollment</h2>
+<div class="flex items-center gap-4">
+<button class="flex size-10 items-center justify-center rounded-full bg-[#1A3223] text-white/70 hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2wLiXdPDDSo2QtU-1oRLewG80d5bGQKz3fNdsnzt-FFLgv7tWYMHZQzdjrWkHtOaMTp3sJJkrS1OeIm8ZxjmBKD2W6zMF2Yj_G37MRwh6NN5WeCPCly0brXMlzSAQjS9WNMqQzkvyUER9swpmii5sUc0dJJJGm54o-jwFAEfRzCxek6is6xHQze8SMEbMu1ds_jYGv-IQO-3nSpuJQmBCiyvtH9Bnv2ZaUgJ89rc523D-vmnNZf98TdFqr7WW6vZosnQQW29sak6W");'></div>
+</div>
+</header>
+<div class="p-10">
+<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+<div class="lg:col-span-3">
+<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+<div class="rounded-2xl bg-[#1A3223] p-6">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-full bg-[#264532]">
+<span class="material-symbols-outlined text-3xl text-[#38e07b]">person_add</span>
+</div>
+<div>
+<p class="text-sm text-white/60">New Enrollments</p>
+<p class="text-2xl font-bold">{{ stats.total_students }}</p>
+</div>
+</div>
+</div>
+<div class="rounded-2xl bg-[#1A3223] p-6">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-full bg-[#264532]">
+<span class="material-symbols-outlined text-3xl text-[#38e07b]">payments</span>
+</div>
+<div>
+<p class="text-sm text-white/60">Total Payments</p>
+<p class="text-2xl font-bold">${{ "{:,.2f}".format(stats.total_payments) }}</p>
+</div>
+</div>
+</div>
+<div class="rounded-2xl bg-[#1A3223] p-6">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-full bg-[#264532]">
+<span class="material-symbols-outlined text-3xl text-[#38e07b]">hourglass_top</span>
+</div>
+<div>
+<p class="text-sm text-white/60">Pending Pre-registrations</p>
+<p class="text-2xl font-bold">{{ stats.pending_preregistrations }}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-2xl bg-[#1A3223] p-6 lg:col-span-2">
+<h3 class="mb-4 text-lg font-medium">Payment Breakdown</h3>
+<div class="h-80">
+<canvas id="paymentChart"></canvas>
+</div>
+</div>
+<div class="rounded-2xl bg-[#1A3223] p-6">
+<h3 class="mb-4 text-lg font-medium">Pending Pre-registrations</h3>
+<!-- This part would require fetching actual pre-registration data -->
+<ul class="space-y-4">
+<li class="flex items-center justify-between">
+<div>
+<p class="font-medium">Sample Parent 1</p>
+<p class="text-sm text-white/60">Enquiry: Grade 5</p>
+</div>
+<button class="rounded-full bg-[#38e07b] px-4 py-1.5 text-xs font-bold text-[#122118] transition-colors hover:bg-opacity-80">View</button>
+</li>
+</ul>
+<button class="mt-4 w-full rounded-lg bg-[#264532] py-2 text-sm font-medium text-white/80 transition-colors hover:bg-[#38e07b] hover:text-[#122118]">View All</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script type="text/javascript">
+    var paymentCtx = document.getElementById('paymentChart');
+    var breakdownData = {{ stats.payment_breakdown | tojson }};
+    var labels = breakdownData.map(item => item[0]);
+    var data = breakdownData.map(item => item[1]);
+
+    if (paymentCtx) {
+      new Chart(paymentCtx, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Payments',
+            data: data,
+            backgroundColor: [
+              '#38e07b',
+              '#264532',
+              '#96c5a9'
+            ],
+            borderColor: '#1A3223',
+            borderWidth: 4,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: 'white',
+                padding: 20,
+                font: {
+                  family: '"Spline Sans", "Noto Sans", sans-serif',
+                  size: 14,
+                }
+              }
+            }
+          },
+          cutout: '70%',
+        }
+      });
+    }
+  </script>
+</body></html>

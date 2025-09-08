@@ -4,18 +4,21 @@ import os
 def create_database():
     """
     Creates the database and tables from schema.txt.
-    Assumes this script is in the 'database' directory.
+    This script is designed to be run from any location and will correctly
+    place the database file within the 'database' directory.
     """
     try:
         # Get the directory of the current script
         dir_path = os.path.dirname(os.path.realpath(__file__))
 
         # Read the schema from the schema.txt file in the same directory
-        with open(os.path.join(dir_path, 'schema.txt'), 'r') as f:
+        schema_path = os.path.join(dir_path, 'schema.txt')
+        with open(schema_path, 'r') as f:
             schema = f.read()
 
         # Create a connection to the database file in the same directory
-        conn = sqlite3.connect(os.path.join(dir_path, 'school.db'))
+        db_path = os.path.join(dir_path, 'school.db')
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         # Execute the schema to create the tables

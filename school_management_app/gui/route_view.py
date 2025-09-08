@@ -28,12 +28,12 @@ class RouteView(tk.Frame):
 
         tk.Label(form_frame, text="Bus:").grid(row=1, column=0, sticky=tk.W, pady=5)
         self.bus_var = tk.StringVar()
-        self.bus_dropdown = ttk.Combobox(form_frame, textvariable=self.bus_var, state="readonly")
+        self.bus_dropdown = ttk.Combobox(form_frame, textvariable=self.bus_var, width=28, state="readonly")
         self.bus_dropdown.grid(row=1, column=1)
 
         tk.Label(form_frame, text="Driver:").grid(row=2, column=0, sticky=tk.W, pady=5)
         self.driver_var = tk.StringVar()
-        self.driver_dropdown = ttk.Combobox(form_frame, textvariable=self.driver_var, state="readonly")
+        self.driver_dropdown = ttk.Combobox(form_frame, textvariable=self.driver_var, width=28, state="readonly")
         self.driver_dropdown.grid(row=2, column=1)
 
         self.add_button = tk.Button(form_frame, text="Add Route", command=self.add_new_route)
@@ -56,10 +56,12 @@ class RouteView(tk.Frame):
         self.export_button.pack(side="left", padx=5)
 
     def load_data(self):
-        self.buses = get_bus_numbers()
-        self.bus_dropdown['values'] = [f"{bus_num} (ID: {bid})" for bid, bus_num in self.buses]
-        self.drivers = get_driver_names()
-        self.driver_dropdown['values'] = [f"{name} (ID: {did})" for did, name in self.drivers]
+        buses = get_bus_numbers()
+        self.bus_map = {f"{bus_num} (ID: {bid})": bid for bid, bus_num in buses}
+        self.bus_dropdown['values'] = list(self.bus_map.keys())
+        drivers = get_driver_names()
+        self.driver_map = {f"{name} (ID: {did})": did for did, name in drivers}
+        self.driver_dropdown['values'] = list(self.driver_map.keys())
         self.load_routes()
 
     def load_routes(self):
@@ -77,8 +79,8 @@ class RouteView(tk.Frame):
             messagebox.showerror("Error", "All fields are required.")
             return
 
-        bus_id = int(re.search(r'\(ID: (\d+)\)', bus_info).group(1))
-        driver_id = int(re.search(r'\(ID: (\d+)\)', driver_info).group(1))
+        bus_id = self.bus_map.get(bus_info)
+        driver_id = self.driver_map.get(driver_info)
 
         if add_route(name, bus_id, driver_id):
             messagebox.showinfo("Success", "Route added successfully!")

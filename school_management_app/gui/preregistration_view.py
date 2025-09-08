@@ -41,7 +41,11 @@ class PreregistrationView(tk.Frame):
             messagebox.showerror("Error", "Name and Phone Number are required.")
             return
 
-        if add_parent(data['name'], data['phone_number'], data['email'], data['child_name'], data['child_age'], data['notes'], data['follow-up_date'], data['next_of_kin_name'], data['next_of_kin_phone']):
+        if add_parent(
+            data['name'], data['phone_number'], data['email'],
+            data['child_name'], data['child_age'], data['notes'],
+            data['follow-up_date'], data['next_of_kin_name'], data['next_of_kin_phone']
+        ):
             messagebox.showinfo("Success", "Parent preregistered successfully!")
             self.clear_form()
         else:

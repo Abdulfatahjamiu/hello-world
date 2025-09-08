@@ -6,7 +6,6 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from core.academic_calendar_controller import add_academic_year, get_all_academic_years, add_term, get_terms_by_year
-
 class AcademicCalendarView(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -59,6 +58,7 @@ class AcademicCalendarView(tk.Frame):
 
     def load_years(self):
         self.years = get_all_academic_years()
+        self.year_map = {year[1]: year[0] for year in self.years}  # Create a name-to-ID map
         self.year_dropdown['values'] = [year[1] for year in self.years]
         if self.years:
             self.year_var.set(self.years[0][1])
@@ -74,17 +74,14 @@ class AcademicCalendarView(tk.Frame):
             messagebox.showinfo("Success", "Academic year added successfully!")
             self.year_entry.delete(0, tk.END)
             self.load_years()
+        elif result == "Year already exists":
+            messagebox.showerror("Error", "This academic year already exists.")
         else:
-            messagebox.showerror("Error", result)
+            messagebox.showerror("Error", "Failed to add academic year.")
 
     def load_terms_for_selected_year(self, event=None):
         selected_year_str = self.year_var.get()
-        year_id = None
-        for year in self.years:
-            if year[1] == selected_year_str:
-                year_id = year[0]
-                break
-
+        year_id = self.year_map.get(selected_year_str)
         for row in self.term_tree.get_children():
             self.term_tree.delete(row)
 
@@ -103,12 +100,7 @@ class AcademicCalendarView(tk.Frame):
             messagebox.showerror("Error", "All term fields are required.")
             return
 
-        year_id = None
-        for year in self.years:
-            if year[1] == year_str:
-                year_id = year[0]
-                break
-
+        year_id = self.year_map.get(year_str)
         if add_term(name, year_id, start_date, end_date):
             messagebox.showinfo("Success", "Term added successfully!")
             self.term_name_entry.delete(0, tk.END)

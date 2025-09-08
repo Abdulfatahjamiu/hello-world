@@ -49,6 +49,7 @@ class ClassManagementView(tk.Frame):
 
     def load_classes(self):
         self.classes = get_all_classes()
+        self.class_map = {c[1]: c[0] for c in self.classes}  # Create a name-to-ID map
         self.class_dropdown['values'] = [c[1] for c in self.classes]
         if self.classes:
             self.class_var.set(self.classes[0][1])
@@ -64,16 +65,14 @@ class ClassManagementView(tk.Frame):
             messagebox.showinfo("Success", "Class added successfully!")
             self.class_entry.delete(0, tk.END)
             self.load_classes()
+        elif result == "Class already exists":
+            messagebox.showerror("Error", "This class already exists.")
         else:
-            messagebox.showerror("Error", result)
+            messagebox.showerror("Error", "Failed to add class.")
 
     def load_sections_for_selected_class(self, event=None):
         selected_class_str = self.class_var.get()
-        class_id = None
-        for c in self.classes:
-            if c[1] == selected_class_str:
-                class_id = c[0]
-                break
+        class_id = self.class_map.get(selected_class_str)
 
         for row in self.section_tree.get_children():
             self.section_tree.delete(row)
@@ -89,11 +88,8 @@ class ClassManagementView(tk.Frame):
         if not all([class_str, name]):
             messagebox.showerror("Error", "Both class and section name are required.")
             return
-        class_id = None
-        for c in self.classes:
-            if c[1] == class_str:
-                class_id = c[0]
-                break
+
+        class_id = self.class_map.get(class_str)
         if add_section(name, class_id):
             messagebox.showinfo("Success", "Section added successfully!")
             self.section_name_entry.delete(0, tk.END)

@@ -1,0 +1,84 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-gray-100">
+<div class="relative flex size-full min-h-screen flex-col bg-slate-900 group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-800 px-10 py-4">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-[#38e07b]">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">School Registration</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<div class="flex items-center gap-6">
+<a class="text-slate-300 hover:text-white text-base font-medium leading-normal transition-colors" href="#">Pre-Registration</a>
+<a class="text-slate-300 hover:text-white text-base font-medium leading-normal transition-colors" href="#">Enrollment</a>
+<a class="text-slate-300 hover:text-white text-base font-medium leading-normal transition-colors" href="#">Payments</a>
+<a class="text-slate-300 hover:text-white text-base font-medium leading-normal transition-colors" href="#">Bus Services</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAknYMrFJ_FGNceUuNypw4x5pq280zM-n69P7lN-q99w-4Cb71mR0k8BwP3lVhhvReMNtaTzewhKdVRsVSFaWAFLsYCzbDPhGsHeB98v-rreKM5Mai7zd6zHR8ETfXf9-8et2abwUDhIMyhh94yLFF3wt2C9Q4QYbYx6GrfOjztcZfu-xk9fNSGTgORjmyu5XHYTX_uQtZXJ3KvHBNeMUEUEwbt9R4KbJSmDIJXXwkZFrJrTox3ewsKbkH9SbBbHjCCniwuNCOJ4019");'></div>
+</div>
+</header>
+<div class="flex-1 flex items-center justify-center p-8">
+<div class="w-full max-w-lg bg-slate-800/50 rounded-2xl shadow-lg p-8 space-y-6">
+<div class="text-center">
+<h1 class="text-3xl font-bold text-white mb-2">New Parent Inquiry</h1>
+<p class="text-slate-400">Please fill out the form below to begin the registration process.</p>
+</div>
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-slate-300 mb-2" for="parentName">Parent Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">person</span>
+<input class="form-input block w-full rounded-full border-transparent bg-slate-700/50 text-white placeholder-slate-400 focus:border-[#38e07b] focus:ring-[#38e07b] h-12 pl-10 pr-4 text-base transition" id="parentName" placeholder="Enter parent's full name" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-300 mb-2" for="email">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">email</span>
+<input class="form-input block w-full rounded-full border-transparent bg-slate-700/50 text-white placeholder-slate-400 focus:border-[#38e07b] focus:ring-[#38e07b] h-12 pl-10 pr-4 text-base transition" id="email" placeholder="Enter email address" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-300 mb-2" for="phoneNumber">Phone Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">phone</span>
+<input class="form-input block w-full rounded-full border-transparent bg-slate-700/50 text-white placeholder-slate-400 focus:border-[#38e07b] focus:ring-[#38e07b] h-12 pl-10 pr-4 text-base transition" id="phoneNumber" placeholder="Enter phone number" type="tel"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-300 mb-2" for="enrollmentYear">Child's Prospective Enrollment Year</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</span>
+<select class="form-select block w-full appearance-none rounded-full border-transparent bg-slate-700/50 text-white placeholder-slate-400 focus:border-[#38e07b] focus:ring-[#38e07b] h-12 pl-10 pr-10 text-base transition" id="enrollmentYear">
+<option class="text-slate-400" disabled="" selected="">Select year</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option value="2026">2026</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-full h-12 px-6 bg-[#38e07b] text-slate-900 text-base font-bold leading-normal tracking-wide hover:bg-green-400 transition-colors" type="submit">
+<span class="truncate">Submit Inquiry</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body></html>

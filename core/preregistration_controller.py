@@ -1,6 +1,6 @@
+from .config import DATABASE_PATH
 import sqlite3
 from datetime import datetime
-from .config import DATABASE_PATH
 
 def add_parent(name, phone_number, email, child_name, child_age, notes, follow_up_date, next_of_kin_name, next_of_kin_phone):
     """
