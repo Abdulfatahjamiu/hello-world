@@ -26,14 +26,29 @@ def get_all_routes():
         cursor.execute("""
             SELECT r.id, r.name, b.bus_number, d.name
             FROM routes r
-            JOIN buses b ON r.bus_id = b.id
-            JOIN drivers d ON r.driver_id = d.id
+            LEFT JOIN buses b ON r.bus_id = b.id
+            LEFT JOIN drivers d ON r.driver_id = d.id
         """)
         routes = cursor.fetchall()
         conn.close()
         return routes
     except Exception as e:
         print(f"Error getting routes: {e}")
+        return []
+
+def get_route_names():
+    """
+    Retrieves all route names from the database.
+    """
+    try:
+        conn = sqlite3.connect(DATABASE_PATH)
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, name FROM routes")
+        routes = cursor.fetchall()
+        conn.close()
+        return routes
+    except Exception as e:
+        print(f"Error getting route names: {e}")
         return []
 
 def get_bus_numbers():

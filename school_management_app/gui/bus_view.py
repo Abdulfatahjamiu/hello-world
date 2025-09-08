@@ -5,8 +5,7 @@ import sys
 import os
 import csv
 
-# Add the parent directory to the path to import the controller
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from core.bus_controller import add_bus, get_all_buses
 
 class BusView(tk.Frame):
@@ -19,24 +18,20 @@ class BusView(tk.Frame):
         self.load_buses()
 
     def create_widgets(self):
-        # Form to add a new bus
         form_frame = tk.LabelFrame(self, text="Add New Bus", padx=10, pady=10)
         form_frame.pack(fill="x", expand="yes", padx=10, pady=5)
 
-        self.bus_number_label = tk.Label(form_frame, text="Bus Number:")
-        self.bus_number_label.grid(row=0, column=0, sticky=tk.W, pady=5)
+        tk.Label(form_frame, text="Bus Number:").grid(row=0, column=0, sticky=tk.W, pady=5)
         self.bus_number_entry = tk.Entry(form_frame, width=30)
         self.bus_number_entry.grid(row=0, column=1)
 
-        self.capacity_label = tk.Label(form_frame, text="Capacity:")
-        self.capacity_label.grid(row=1, column=0, sticky=tk.W, pady=5)
+        tk.Label(form_frame, text="Capacity:").grid(row=1, column=0, sticky=tk.W, pady=5)
         self.capacity_entry = tk.Entry(form_frame, width=30)
         self.capacity_entry.grid(row=1, column=1)
 
         self.add_button = tk.Button(form_frame, text="Add Bus", command=self.add_new_bus)
         self.add_button.grid(row=2, column=0, columnspan=2, pady=10)
 
-        # Table to display buses
         table_frame = tk.LabelFrame(self, text="Bus List", padx=10, pady=10)
         table_frame.pack(fill="both", expand="yes", padx=10, pady=5)
 
@@ -51,7 +46,6 @@ class BusView(tk.Frame):
 
         self.refresh_button = tk.Button(button_frame, text="Refresh", command=self.load_buses)
         self.refresh_button.pack(side="left", padx=5)
-
         self.export_button = tk.Button(button_frame, text="Export to CSV", command=self.export_to_csv)
         self.export_button.pack(side="left", padx=5)
 
@@ -77,10 +71,9 @@ class BusView(tk.Frame):
             messagebox.showerror("Error", "Failed to add bus.")
 
     def export_to_csv(self):
-        if not self.buses:
+        if not hasattr(self, 'buses') or not self.buses:
             messagebox.showerror("Error", "No data to export.")
             return
-
         try:
             with open("buses_report.csv", "w", newline="") as f:
                 writer = csv.writer(f)

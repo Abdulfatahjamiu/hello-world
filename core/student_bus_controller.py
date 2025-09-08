@@ -28,8 +28,8 @@ def get_all_assignments():
             FROM student_bus sb
             JOIN students s ON sb.student_id = s.id
             JOIN routes r ON sb.route_id = r.id
-            JOIN buses b ON r.bus_id = b.id
-            JOIN drivers d ON r.driver_id = d.id
+            LEFT JOIN buses b ON r.bus_id = b.id
+            LEFT JOIN drivers d ON r.driver_id = d.id
         """)
         assignments = cursor.fetchall()
         conn.close()

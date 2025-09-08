@@ -9,7 +9,6 @@ def assign_student_to_class(student_id, section_id, term_id):
         cursor.execute("SELECT * FROM student_class_assignments WHERE student_id = ? AND term_id = ?", (student_id, term_id))
         if cursor.fetchone():
             return "Student already assigned for this term"
-
         cursor.execute("INSERT INTO student_class_assignments (student_id, section_id, term_id) VALUES (?, ?, ?)", (student_id, section_id, term_id))
         conn.commit()
         conn.close()

@@ -22,7 +22,6 @@ def get_dashboard_stats():
         cursor.execute("SELECT COUNT(*) FROM parents WHERE follow_up_date IS NOT NULL")
         pending_preregistrations = cursor.fetchone()[0]
 
-        # Payment breakdown
         cursor.execute("SELECT account, SUM(amount) FROM payments GROUP BY account")
         payment_breakdown = cursor.fetchall()
 

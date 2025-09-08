@@ -8,12 +8,10 @@ def add_payment(student_id, amount, account, payment_date, academic_year, term):
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
-
         cursor.execute("""
             INSERT INTO payments (student_id, amount, account, payment_date, academic_year, term)
             VALUES (?, ?, ?, ?, ?, ?)
         """, (student_id, amount, account, payment_date, academic_year, term))
-
         conn.commit()
         conn.close()
         return True
@@ -23,19 +21,17 @@ def add_payment(student_id, amount, account, payment_date, academic_year, term):
 
 def get_all_payments():
     """
-    Retrieves all payments from the.
+    Retrieves all payments from the database.
     """
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
-
         cursor.execute("""
             SELECT p.id, s.name, p.amount, p.account, p.payment_date, p.academic_year, p.term
             FROM payments p
             JOIN students s ON p.student_id = s.id
         """)
         payments = cursor.fetchall()
-
         conn.close()
         return payments
     except Exception as e:
@@ -49,7 +45,6 @@ def get_payments_by_filter(student_id=None, start_date=None, end_date=None, acco
     try:
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
-
         query = """
             SELECT p.id, s.name, p.amount, p.account, p.payment_date, p.academic_year, p.term
             FROM payments p
@@ -75,10 +70,8 @@ def get_payments_by_filter(student_id=None, start_date=None, end_date=None, acco
         if term:
             query += " AND p.term = ?"
             params.append(term)
-
         cursor.execute(query, params)
         payments = cursor.fetchall()
-
         conn.close()
         return payments
     except Exception as e:

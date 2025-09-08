@@ -4,22 +4,20 @@ from tkinter import messagebox
 import sys
 import os
 
-# Add the parent directory to the path to import the controller
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from core.student_bus_controller import get_all_assignments, update_pickup_status, update_dropoff_status
 
 class PickupDropoffView(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.master.title("Pickup and Drop-off")
+        self.master.title("Pickup and Drop-off Log")
         self.pack(fill="both", expand=True, padx=10, pady=10)
         self.create_widgets()
         self.load_assignments()
 
     def create_widgets(self):
-        # Table to display assignments
-        table_frame = tk.LabelFrame(self, text="Student Status", padx=10, pady=10)
+        table_frame = tk.LabelFrame(self, text="Student Bus Status", padx=10, pady=10)
         table_frame.pack(fill="both", expand=True, padx=10, pady=5)
 
         self.columns = ("Student", "Route", "Pickup Status", "Drop-off Status")
@@ -33,11 +31,9 @@ class PickupDropoffView(tk.Frame):
 
         self.refresh_button = tk.Button(button_frame, text="Refresh", command=self.load_assignments)
         self.refresh_button.pack(side="left", padx=5)
-
-        self.pickup_button = tk.Button(button_frame, text="Mark as Picked Up", command=self.mark_picked_up)
+        self.pickup_button = tk.Button(button_frame, text="Mark Picked Up", command=self.mark_picked_up)
         self.pickup_button.pack(side="left", padx=5)
-
-        self.dropoff_button = tk.Button(button_frame, text="Mark as Dropped Off", command=self.mark_dropped_off)
+        self.dropoff_button = tk.Button(button_frame, text="Mark Dropped Off", command=self.mark_dropped_off)
         self.dropoff_button.pack(side="left", padx=5)
 
     def load_assignments(self):
@@ -45,9 +41,8 @@ class PickupDropoffView(tk.Frame):
             self.tree.delete(row)
         self.assignments = get_all_assignments()
         for assignment in self.assignments:
-            # We only need to display student name, route name, pickup status, dropoff status
-            display_data = (assignment[2], assignment[3], assignment[6], assignment[7])
-            self.tree.insert("", "end", values=display_data)
+            display_data = (assignment[2], assignment[3], assignment[6] or "Pending", assignment[7] or "Pending")
+            self.tree.insert("", "end", values=display_data, iid=assignment[0]) # Use student ID as iid
 
     def get_selected_assignment(self):
         selected_item = self.tree.selection()
@@ -55,18 +50,16 @@ class PickupDropoffView(tk.Frame):
             messagebox.showerror("Error", "Please select a student from the list.")
             return None
 
-        # Find the full assignment data corresponding to the selected treeview item
-        selected_values = self.tree.item(selected_item)['values']
+        student_id = int(selected_item[0])
         for assignment in self.assignments:
-            if assignment[2] == selected_values[0] and assignment[3] == selected_values[1]:
+            if assignment[0] == student_id:
                 return assignment
         return None
 
     def mark_picked_up(self):
         assignment = self.get_selected_assignment()
         if assignment:
-            student_id = assignment[0]
-            route_id = assignment[1]
+            student_id, route_id = assignment[0], assignment[1]
             if update_pickup_status(student_id, route_id, "Picked Up"):
                 self.load_assignments()
             else:
@@ -75,13 +68,11 @@ class PickupDropoffView(tk.Frame):
     def mark_dropped_off(self):
         assignment = self.get_selected_assignment()
         if assignment:
-            student_id = assignment[0]
-            route_id = assignment[1]
+            student_id, route_id = assignment[0], assignment[1]
             if update_dropoff_status(student_id, route_id, "Dropped Off"):
                 self.load_assignments()
             else:
                 messagebox.showerror("Error", "Failed to update drop-off status.")
-
 
 if __name__ == '__main__':
     root = tk.Tk()

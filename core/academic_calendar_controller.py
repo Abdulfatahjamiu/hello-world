@@ -1,6 +1,5 @@
 from .config import DATABASE_PATH
 import sqlite3
-from .config import DATABASE_PATH
 
 def add_academic_year(year):
     try:

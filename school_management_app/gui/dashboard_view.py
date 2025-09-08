@@ -5,10 +5,9 @@ import os
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-# Add the parent directory to the path to import the controller
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Add the project root to the path to import the core modules
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from core.dashboard_controller import get_dashboard_stats
-# Import all the other views for navigation
 from .preregistration_view import PreregistrationView
 from .parent_list_view import ParentListView
 from .student_registration_view import StudentRegistrationView
@@ -25,16 +24,13 @@ from .academic_calendar_view import AcademicCalendarView
 from .class_management_view import ClassManagementView
 from .student_class_assignment_view import StudentClassAssignmentView
 
-
 class DashboardView(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
         self.master.title("School Management Dashboard")
-        # Make the window larger
         self.master.geometry("1200x800")
         self.pack(fill="both", expand=True)
-
         self.create_widgets()
         self.load_stats()
 
@@ -53,8 +49,6 @@ class DashboardView(tk.Frame):
 
         # --- Sidebar Buttons ---
         self.create_sidebar_buttons()
-
-        # --- Content Area Widgets ---
         self.create_content_widgets()
 
     def create_sidebar_buttons(self):
@@ -76,7 +70,6 @@ class DashboardView(tk.Frame):
             "Class Management": lambda: self.open_view(ClassManagementView),
             "Assign Student to Class": lambda: self.open_view(StudentClassAssignmentView),
         }
-
         for text, command in buttons.items():
             btn = tk.Button(self.sidebar, text=text, command=command, bg="#34495e", fg="white", relief="flat", anchor="w", padx=10, pady=10)
             btn.pack(fill="x", pady=2)
@@ -96,12 +89,10 @@ class DashboardView(tk.Frame):
         # Chart Frame
         chart_frame = tk.Frame(self.dashboard_frame, bg="#ecf0f1")
         chart_frame.pack(fill="both", expand=True, pady=10, padx=10)
-
         self.fig = Figure(figsize=(5, 4), dpi=100)
         self.ax = self.fig.add_subplot(111)
         self.canvas = FigureCanvasTkAgg(self.fig, master=chart_frame)
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-
         self.dashboard_frame.pack(fill="both", expand=True)
 
     def create_stat_box(self, parent, title):
@@ -129,8 +120,7 @@ class DashboardView(tk.Frame):
             self.ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
             self.ax.set_title("Payment Breakdown by Account")
         else:
-            self.ax.text(0.5, 0.5, "No payment data available", horizontalalignment='center', verticalalignment='center')
-
+            self.ax.text(0.5, 0.5, "No payment data available", ha='center', va='center')
         self.canvas.draw()
 
     def open_view(self, ViewClass):
